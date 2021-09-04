@@ -15,6 +15,7 @@ urlpatterns = [
     path('wishlist-page/', views.wishlist, name='wishlist'),
     path('category_grid-page/', views.category_grid, name='category_grid'),
     path('category_list-page/', views.category_list, name='category_list'),
+    path('dashboard-page/', views.dashboard, name='dashboard'),
     path('login-page/', views.login, name='login'),
     
 ]

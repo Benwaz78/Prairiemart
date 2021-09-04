@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from prairiemartapp.models import *
 
 def index(request):
     return render(request, 'prairiemartapp//index.html')
@@ -40,3 +41,12 @@ def category_list(request):
 
 def login(request):
     return render(request, 'prairiemartapp/login.html')
+
+def dashboard(request):
+    return render(request, 'prairiemartapp/dashboard.html')
+
+def show_cat(request):
+    return render(request, 'prairiemartapp/show-cat.html')
+
+
+
