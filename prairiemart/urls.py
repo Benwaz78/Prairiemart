@@ -23,6 +23,7 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.index, name='index'),
     path('pages/', include('prairiemartapp.urls')),
+    path('dashboard/', include('dashboard.urls')),
     path('admin/', admin.site.urls),
 
 ]

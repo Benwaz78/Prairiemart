@@ -21,7 +21,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATICFILES_DIRS = [STATIC_DIR,]
 
-AUTH_USER_MODEL = 'prairiemartapp.CustomUser'
+AUTH_USER_MODEL = 'dashboard.CustomUser'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -31,6 +32,7 @@ SECRET_KEY = 'django-insecure-cu-@dtg95c+t_k9o*x@elpyon1+jxy+c+hx*^($)&zh^xh!qv%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ALLOWED_HOSTS = []
 
@@ -45,6 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'prairiemartapp',
+    'orders',
+    'basket',
+    'dashboard',
+    'blog',
+    'products',
 ]
 
 MIDDLEWARE = [
