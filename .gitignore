@@ -2,4 +2,8 @@
 _pycache_
 prairiemartapp/__pycache__
 prairiemartapp/migrations/__pycache__
+products/migrations/__pycache__
+blog/migrations/__pycache__
+basket/migrations/__pycache__
+orders/migrations/__pycache__
 prairiemart/__pycache__
