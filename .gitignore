@@ -7,3 +7,4 @@ blog/migrations/__pycache__
 basket/migrations/__pycache__
 orders/migrations/__pycache__
 prairiemart/__pycache__
+db.sqlite
