@@ -21,7 +21,7 @@ import random
 class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = '/dashboard/'
     model = Products
-    template_name = 'dashboard/add-edit-product.html'
+    template_name = 'dashboard/products/add-edit-product.html'
     success_url = reverse_lazy('products:add_product')
     success_message = 'Product added successfully'
     form_class = ProductForm
@@ -40,13 +40,13 @@ class UpdateProduct(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('backend:add_meeting')
     success_message = 'Product edited successfully'
     form_class = ProductForm
-    template_name = 'dashboard/add-edit-product.html'
+    template_name = 'dashboard/products/add-edit-product.html'
 
 class ListProducts(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
     model = Products
     paginate_by = 4
-    template_name =  'dashboard/list-products.html'
+    template_name =  'dashboard/products/list-products.html'
     context_object_name = 'list_products'
 
 class DeleteProduct(LoginRequiredMixin, DeleteView):
@@ -57,7 +57,7 @@ class DeleteProduct(LoginRequiredMixin, DeleteView):
 class SingleProduct(LoginRequiredMixin, DetailView):
     login_url = '/dashboard/'
     model = Products
-    template_name = 'dashboard/single-product.html'
+    template_name = 'dashboard/products/single-product.html'
     context_object_name = 'single_product'
 
 
