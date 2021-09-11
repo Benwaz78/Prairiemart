@@ -78,18 +78,18 @@ class Size(models.Model):
     
 
     def save(self, *args, **kwargs):
-        self.size = self.size.uppercase()
+        self.size = self.size.upper()
         return super().save(*args, **kwargs)
     
 
 class Products(models.Model):
-    title = models.CharField(max_length=300)
+    prod_name = models.CharField(max_length=300, verbose_name='Product Name')
     slug = models.SlugField(max_length=300, unique=True)
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand, related_name='product_brand', null=True, blank=True, on_delete=models.CASCADE)
     size = models.ForeignKey(Size, related_name='product_size', null=True, blank=True, on_delete=models.CASCADE)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='product_creator')
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=9, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     image1 = models.ImageField(upload_to='uploads/', blank=True, null=True)
@@ -127,4 +127,4 @@ class Products(models.Model):
         return reverse('prairiemartapp:product_detail', args=[self.slug])
 
     def __str__(self):
-        return self.title
+        return self.prod_name

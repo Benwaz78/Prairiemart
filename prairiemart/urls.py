@@ -24,6 +24,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('pages/', include('prairiemartapp.urls')),
     path('dashboard/', include('dashboard.urls')),
+    path('products/', include('products.urls')),
     path('admin/', admin.site.urls),
 
 ]

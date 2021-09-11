@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   {% if not form.instance.pk %}
+        Add Product
+    {% else %}
+        Edit Product
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    {% if not form.instance.pk %}
+        <h3>Add Product</h3>
+        {% else %}
+        <h3>Edit Product</h3>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form class="forms-sample" method="POST" enctype="multipart/form-data">
+
+                    {% include 'dashboard/form-snippet.html' with form=form %}
+                    {% if not form.instance.pk %}
+                        <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-primary mr-2">Edit Product</button>
+                    {% endif %}
+                    
+                    
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}

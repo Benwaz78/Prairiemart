@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+{{ single_product.prod_name }}
+{% endblock %}
+   
+
+
+{% block content %}
+<div class="page-header">
+        <h3>{{ single_product.prod_name }}</h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img src="{{ single_product.show_image1 }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="{{ single_product.show_image2 }}" class="img-fluid" alt="">
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="{{ single_product.show_image3 }}" class="img-fluid" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <table class="table table-bordred">
+                            <tr>
+                                <th>Fields</th>
+                                <th>Data</th>
+                            </tr>
+                            {% if single_product %}
+                                <tr>
+                                    <td>Product Name</td>
+                                    <td>{{ single_product.prod_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Price</td>
+                                    <td>{{ single_product.price }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Category</td>
+                                    <td>{{ single_product.category }}</td>
+                                </tr>
+                                <tr>
+                                    <td>User</td>
+                                    <td>{{ single_product.created_by }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Description</td>
+                                    <td>{{ single_product.description }}</td>
+                                </tr>
+                           {% endif %}
+                            
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="{% url 'products:add_product' %}" class="btn btn-primary">Add Product</a>
+                        {% if single_product %}
+                        <a href="{% url 'products:edit_product' single_product.id %}" class="btn btn-primary">Edit Product</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}
