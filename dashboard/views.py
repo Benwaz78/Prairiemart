@@ -61,7 +61,12 @@ def edit_form(request):
 
         if edit_form.is_valid():
             edit_form.save()
-            return redirect('backend:view_profile')
+            return redirect('dashboard:view_profile')
     else:
         edit_form = EditProfileForm(instance=request.user)
     return render(request, 'dashboard/edit-admin-profile.html', {'edit':edit_form})
+
+@login_required(login_url='/dashboard/')
+def view_profile(request):
+    return render(request, 'dashboard/view-profile.html', {'view':request.user})
+

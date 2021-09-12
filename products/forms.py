@@ -67,6 +67,8 @@ class ProductForm(forms.ModelForm):
             }
         )
     )
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+
 
     class Meta():
         model = Products

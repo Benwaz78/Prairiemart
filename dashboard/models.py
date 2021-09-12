@@ -31,4 +31,4 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         if self.profile:
             return self.profile.url
         else:
-            return 'image is here'
+            return '/static/dashboard/images/faces/avatar.png'

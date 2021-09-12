@@ -37,5 +37,7 @@ urlpatterns = [
     path('dashboard-page/', views.admin_dashboard, name='admin_dashboard'),
     path('change-password/', views.change_password, name='change_password'),
     path('add-admin/', views.add_admin, name='add_admin'),
+    path('edit-form/', views.edit_form, name='edit_form'),
+    path('view-profile/', views.view_profile, name='view_profile'),
 
 ]

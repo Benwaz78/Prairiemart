@@ -101,15 +101,15 @@
             </li>
             <li class="nav-item dropdown d-none d-xl-inline-flex user-dropdown">
               <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                <img class="img-xs rounded-circle ml-2" src="{% static 'dashboard/images/faces/face8.jpg' %}" alt="Profile image"> <span class="font-weight-normal"> {{ request.user.user_name }} </span></a>
+                <img class="img-xs rounded-circle ml-2" src="{{ request.user.get_profile }}" alt="{{ request.user.user_name }}"> <span class="font-weight-normal"> {{ request.user.user_name }} </span></a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                 <div class="dropdown-header text-center">
-                  <img class="img-md rounded-circle" src="{% static 'dashboard/images/faces/face8.jpg' %}" alt="Profile image">
+                  <img class="img-md rounded-circle img-fluid" src="{{ request.user.get_profile }}" alt="{{ request.user.user_name }}">
                   <p class="mb-1 mt-3">{{ request.user.user_name }}</p>
                   <p class="font-weight-light text-muted mb-0">{{ request.user.email }}</p>
                 </div>
-                <a href="#" class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                <a href="#" class="dropdown-item"><i class="dropdown-item-icon  icon-note  text-primary"></i> Edit Profile</a>
+                <a href="{% url 'dashboard:view_profile' %}" class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+                <a href="{% url 'dashboard:edit_form' %}" class="dropdown-item"><i class="dropdown-item-icon  icon-note  text-primary"></i> Edit Profile</a>
                 <a href="{% url 'dashboard:change_password' %}" class="dropdown-item"><i class="dropdown-item-icon  icon-lock  text-primary"></i> Change Password</a>
                 <a class="dropdown-item" data-toggle="modal" data-target="#confirmLogout"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
               </div>
@@ -128,12 +128,20 @@
             <li class="nav-item nav-profile">
               <a href="#" class="nav-link">
                 <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="{% static 'dashboard/images/faces/face8.jpg' %}" alt="profile image">
+                  <img class="img-xs rounded-circle" src="{{ request.user.get_profile }}" alt="{{ request.user.user_name }}">
                   <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
                   <p class="profile-name">{{ request.user.user_name }}</p>
-                  <p class="designation">Administrator</p>
+                  <p class="designation">
+                    {% if request.user.is_staff %}
+                      Administrator
+                    {% elif request.user.is_vendor %}
+                      Vendor
+                    {% else %}
+                      Custormer
+                    {% endif %}
+                  </p>
                 </div>
                 <div class="icon-container">
                   <i class="icon-bubbles"></i>
