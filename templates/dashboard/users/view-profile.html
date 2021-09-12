@@ -1,0 +1,52 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+{{ request.user.user_name }}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h3 class="page-title"> Edit Profile </h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                      <img src="{{ request.user.get_profile }}" class="img-fluid" alt="{{ request.user.user_name }}">
+                    </div>
+                    <div class="col-md-9">
+                      <ul class="list-group">
+                        <li class="list-group-item">
+                          <strong>Email: </strong>
+                          {{ request.user.email }}
+                        </li>
+                        <li class="list-group-item">
+                          <strong>Phone: </strong>
+                          {{ request.user.phone }}
+                        </li>
+                          <li class="list-group-item">
+                            <strong>Firstname: </strong>
+                            {{ request.user.first_name }}
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Lastname: </strong>
+                            {{ request.user.last_name }}
+                          </li>
+                          <li class="list-group-item">
+                            <strong>Privilege: </strong>
+                            {{ request.user.get_priviledge }}
+                          </li>
+                       </ul>
+                       <a href="{% url 'dashboard:edit_form' %}" class="btn btn-primary mt-2">Edit Profile</a>
+                       <a href="{% url 'dashboard:add_admin' %}" class="btn btn-primary mt-2">Add User</a>
+                       <a href="{% url 'dashboard:list_users' %}" class="btn btn-primary mt-2">List Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}

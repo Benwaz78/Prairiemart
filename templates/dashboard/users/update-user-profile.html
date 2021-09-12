@@ -13,9 +13,9 @@ Edit Profile
         <div class="card">
             <div class="card-body">
 
-                <form class="forms-sample" method="POST">
+                <form class="forms-sample" method="POST" enctype="multipart/form-data">
 
-                    {% include 'dashboard/form-snippet.html' with form=edit %}
+                    {% include 'dashboard/form-snippet.html' with form=form %}
                     
                     <button type="submit" class="btn btn-primary mr-2">Edit Profile</button>
                 </form>

@@ -39,5 +39,13 @@ urlpatterns = [
     path('add-admin/', views.add_admin, name='add_admin'),
     path('edit-form/', views.edit_form, name='edit_form'),
     path('view-profile/', views.view_profile, name='view_profile'),
+    path('edit-vendor-profile/', views.edit_vendor_profile_form, name='edit_vendor_profile_form'),
+    path('register-vendor/', views.AddVendorView.as_view(), name='add_vendor'),
+    path('list-users/', views.ListUsers.as_view(), name='list_users'),
+    path('single-user/<int:pk>/', views.SingleUser.as_view(), name='single_user'),
+    path('delete-user/<int:pk>/', views.DeleteUser.as_view(), name='delete_user'),
+    path('update-user/<int:pk>/', views.UpdateUser.as_view(), name='update_user'),
+    path('activate-user/<int:user_id>/', views.activate_user, name='activate_user'),
+    path('deactivate-user/<int:user_id>/', views.deactivate_user, name='deactivate_user'),
 
 ]

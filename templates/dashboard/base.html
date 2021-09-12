@@ -57,7 +57,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="{% static 'dashboard/images/faces/face10.jpg' %}" alt="image" class="img-sm profile-pic"> </div>
+                    <img src="{% static 'dashboard/images/faces/face1.jpg' %}" alt="image" class="img-sm profile-pic"> </div>
                   <div class="preview-item-content flex-grow py-2">
                     <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -65,7 +65,7 @@
                 </a>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
-                    <img src="{% static 'dashboard/images/faces/face12.jpg' %}" alt="image" class="img-sm profile-pic"> </div>
+                    <img src="{% static 'dashboard/images/faces/face2.jpg' %}" alt="image" class="img-sm profile-pic"> </div>
                   <div class="preview-item-content flex-grow py-2">
                     <p class="preview-subject ellipsis font-weight-medium text-dark">David Grey </p>
                     <p class="font-weight-light small-text"> The meeting is cancelled </p>
@@ -109,7 +109,11 @@
                   <p class="font-weight-light text-muted mb-0">{{ request.user.email }}</p>
                 </div>
                 <a href="{% url 'dashboard:view_profile' %}" class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
-                <a href="{% url 'dashboard:edit_form' %}" class="dropdown-item"><i class="dropdown-item-icon  icon-note  text-primary"></i> Edit Profile</a>
+                {% if request.user.is_staff == True %}
+                  <a href="{% url 'dashboard:edit_form' %}" class="dropdown-item"><i class="dropdown-item-icon  icon-note  text-primary"></i> Edit Profile</a>
+                {% elif request.user.is_vendor == True %}
+                  <a href="{% url 'dashboard:edit_vendor_profile_form' %}" class="dropdown-item"><i class="dropdown-item-icon  icon-note  text-primary"></i> Edit Profile</a>
+                {% endif %}
                 <a href="{% url 'dashboard:change_password' %}" class="dropdown-item"><i class="dropdown-item-icon  icon-lock  text-primary"></i> Change Password</a>
                 <a class="dropdown-item" data-toggle="modal" data-target="#confirmLogout"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
               </div>
@@ -123,119 +127,11 @@
       <!-- partial -->
       <div class="container-fluid page-body-wrapper">
         <!-- partial:partials/_sidebar.html -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile">
-              <a href="#" class="nav-link">
-                <div class="profile-image">
-                  <img class="img-xs rounded-circle" src="{{ request.user.get_profile }}" alt="{{ request.user.user_name }}">
-                  <div class="dot-indicator bg-success"></div>
-                </div>
-                <div class="text-wrapper">
-                  <p class="profile-name">{{ request.user.user_name }}</p>
-                  <p class="designation">
-                    {% if request.user.is_staff %}
-                      Administrator
-                    {% elif request.user.is_vendor %}
-                      Vendor
-                    {% else %}
-                      Custormer
-                    {% endif %}
-                  </p>
-                </div>
-                <div class="icon-container">
-                  <i class="icon-bubbles"></i>
-                  <div class="dot-indicator bg-danger"></div>
-                </div>
-              </a>
-            </li>
-            
-            <li class="nav-item nav-category">
-              <a class="nav-link" href="{% url 'dashboard:admin_dashboard' %}">
-                <span class="menu-title">Dashboard</span>
-                <i class="icon-screen-desktop menu-icon"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
-                <span class="menu-title">Users</span>
-                <i class="icon-layers menu-icon"></i>
-              </a>
-              <div class="collapse" id="users">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:add_admin' %}">Add User</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="#">View Users</a></li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#brands" aria-expanded="false" aria-controls="brands">
-                  <span class="menu-title">Brands</span>
-                  <i class="icon-layers menu-icon"></i>
-                </a>
-                <div class="collapse" id="brands">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Add Brand</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">View Brands</a></li>
-                  </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#size" aria-expanded="false" aria-controls="size">
-                  <span class="menu-title">Size</span>
-                  <i class="icon-layers menu-icon"></i>
-                </a>
-                <div class="collapse" id="size">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Add Size</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">View Sizes</a></li>
-                  </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
-                  <span class="menu-title">Products</span>
-                  <i class="icon-layers menu-icon"></i>
-                </a>
-                <div class="collapse" id="products">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_product' %}">Add Product</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{% url 'products:list_products' %}">View Products</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Categories</a></li>
-                  </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#post" aria-expanded="false" aria-controls="post">
-                  <span class="menu-title">Posts</span>
-                  <i class="icon-layers menu-icon"></i>
-                </a>
-                <div class="collapse" id="post">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Add Post</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">View Posts</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Categories</a></li>
-                  </ul>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#orders" aria-expanded="false" aria-controls="orders">
-                  <span class="menu-title">Orders</span>
-                  <i class="icon-layers menu-icon"></i>
-                </a>
-                <div class="collapse" id="orders">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">View Orders</a></li>
-                  </ul>
-                </div>
-            </li>
-           
-           
-            
-            
-           
-          </ul>
-        </nav>
+        {% if request.user.is_staff == True %}
+            {% include 'dashboard/users/admin-sidebar.html' %}
+        {% elif request.user.is_vendor == True  %}
+            {% include 'dashboard/users/vendor-sidebar.html' %}
+        {% endif %}
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">

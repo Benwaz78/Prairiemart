@@ -63,6 +63,7 @@ class EditProfileForm(forms.ModelForm):
     last_name = forms.CharField(label='Lastname', required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Lastname'}))
     is_staff = forms.BooleanField(required=False, label='Staff')
     is_vendor = forms.BooleanField(required=False, label='Vendor')
+    is_customer = forms.BooleanField(required=False, label='Customer')
     email = forms.CharField(label='Email*', widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'}))
     phone = forms.CharField(label='Phone Number*', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone Number'}))
     profile = forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class':'form-control'}))
@@ -70,6 +71,35 @@ class EditProfileForm(forms.ModelForm):
 
     class Meta():
         model = CustomUser
-        fields = ('user_name', 'first_name', 'last_name', 'is_staff', 'is_vendor', 'email', 'profile', 'phone')
+        fields = ('user_name', 'first_name', 'last_name', 'is_staff', 'is_vendor', 'is_customer', 'email', 'profile', 'phone')
 
-    
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.profile = self.cleaned_data['profile']
+        
+
+        if commit:
+            user.save()
+            return user
+
+class EditVendorProfileForm(forms.ModelForm):
+    user_name = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'user_name'}))
+    first_name = forms.CharField(label='Firstname', required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Firstname'}))
+    last_name = forms.CharField(label='Lastname', required=False, widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Lastname'}))
+    email = forms.CharField(label='Email*', widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'}))
+    phone = forms.CharField(label='Phone Number*', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Phone Number'}))
+    profile = forms.ImageField(required=False, widget=forms.ClearableFileInput(attrs={'class':'form-control'}))
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+
+    class Meta():
+        model = CustomUser
+        fields = ('user_name', 'first_name', 'last_name', 'email', 'profile', 'phone')
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.profile = self.cleaned_data['profile']
+        
+
+        if commit:
+            user.save()
+            return user
