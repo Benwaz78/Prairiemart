@@ -74,3 +74,32 @@ class ProductForm(forms.ModelForm):
 
 
 
+class BrandForm(forms.ModelForm):
+    brand_name = forms.CharField(
+        label='Brand Name',
+        widget=forms.TextInput(
+            attrs={'class':'form-control'}))
+    brand_img = forms.ImageField(
+        label= 'Brand Image',
+        widget= forms.ClearableFileInput(
+            attrs={'class':'form-control'}
+        )
+    )
+
+    class Meta():
+        model = Brand
+        exclude = ('slug','created')
+
+
+class SizeForm(forms.ModelForm):
+    size = forms.CharField(
+        label ='Size',
+        widget =forms.TextInput(
+            attrs ={'class':'form-control'}
+        )
+    )
+ 
+
+    class Meta():
+        model = Size
+        exclude = ('slug','created')

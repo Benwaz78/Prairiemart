@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   {% if not form.instance.pk %}
+        Add Size
+    {% else %}
+        Edit Size
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    {% if not form.instance.pk %}
+        <h3>Add Size</h3>
+        {% else %}
+        <h3>Edit Size</h3>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form class="forms-sample" method="POST" enctype="multipart/form-data">
+
+                    {% include 'dashboard/form-snippet.html' with form=form %}
+                    {% if not form.instance.pk %}
+                        <button type="submit" class="btn btn-primary mr-2">Add Size</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-primary mr-2">Edit Size</button>
+                    {% endif %}
+                    
+                    
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}
