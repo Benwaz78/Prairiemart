@@ -494,7 +494,15 @@
                         </div>
                     </li>
                     <li><a href="#"> Jewelry  </a></li>
-                    <li><a href="Blog.html">Account</a></li>
+                    <li class="parent parent-submenu">
+                        <a href="{% url 'prairiemartapp:cutomer_dashboard' %}"> Account  </a>
+                        <span class="toggle-submenu"></span>
+                        <div class="submenu drop-menu" style="right: auto; left: 0px;">
+                            <ul>
+                                <li><a href="#customerLogout" data-toggle="modal">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
 
             </div><!-- menu -->

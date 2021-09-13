@@ -9,36 +9,41 @@ Dashboard
 {% block content %}
 		<!-- MAIN -->
 		<main class="site-main">
-            <div class="row">
-                <div class="col-md-12 col-md-push-1   col-main" style="margin-top: 50px;">
-            <h2 class="page-heading">
-                <span class="page-heading-title2">My Account</span>
-            </h2>
-            </div>
-            </div>
-            <div class="block-section-top block-section-top13" style="margin-top:2%" >
-                <div class="container" >
-                    <div class="box-section-top" >
-
-                       {% include 'prairiemartapp/customer-sidebar.html' %}
-                        <!-- block slide top -->
-                        <div>
-                        <div class="block-slide-main slide-opt-13" style="margin-bottom: 60%;">
-                            {% include 'prairiemartapp/customer-header.html' %}
-                            <div class="product-item-photo text-dark">
-
-                               content
-                                
-                            </div>   
-                        
-                        </div>
-                        {% include 'prairiemartapp/confirm-logout.html' %}
-                       
-                        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12  col-main" style="margin-top: 50px;">
+                        <h2 class="page-heading">
+                            <span class="page-heading-title2">My Account</span>
+                        </h2>
                     </div>
                 </div>
+                <div class="block-section-top block-section-top13" style="margin-top:2%" >
+                    <div class="container" >
+                        <div class="row">
+                            <div class="box-section-top" >
+    
+                                {% include 'prairiemartapp/customer-sidebar.html' %}
+                                 <!-- block slide top -->
+                                 <div>
+                                 <div class="block-slide-main slide-opt-13" style="margin-bottom: 60%;">
+                                     {% include 'prairiemartapp/customer-header.html' %}
+                                     <div class="product-item-photo text-dark">
+         
+                                        content
+                                         
+                                     </div>   
+                                 
+                                 </div>
+                                
+                                 </div>
+                             </div>
+                        </div>
+                       
+                    </div>
+                </div>
+    
             </div>
-
+           
             
 		</main><!-- end MAIN -->
 
