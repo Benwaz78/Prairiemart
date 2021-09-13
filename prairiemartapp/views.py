@@ -1,8 +1,50 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from prairiemartapp.models import *
+<<<<<<< HEAD
 from products.models import Category,Products,Brand
 from django.shortcuts import render, redirect,get_object_or_404
+=======
+from dashboard.forms import *
+from prairiemartapp.forms import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+
+
+@login_required(login_url='/dashboard/')                                                                                                                                                                                                                                                                                                                                                                                                                            
+def change_password(request):
+    if request.method == 'POST':
+        change_password = ChangePasswordForm(data=request.POST, user=request.user)
+        if change_password.is_valid():
+            change_password.save()
+            update_session_auth_hash(request, change_password.user)
+            messages.success(request, 'Password Changed Successfully')
+    else:
+        change_password = ChangePasswordForm(user=request.user)
+    return render(request, 'prairiemartapp/change-password.html', {'change_pass':change_password})
+
+
+@login_required(login_url='/dashboard/')
+def view_profile(request):
+    return render(request, 'prairiemartapp/view-profile.html', {'view':request.user})
+
+@login_required(login_url='/dashboard/')
+def edit_form(request):
+    if request.method == 'POST':
+        edit_form = EditCustomerProfileForm(request.POST, request.FILES, instance=request.user)
+
+        if edit_form.is_valid():
+            edit_form.save()
+            return redirect('prairiemartapp:view_profile')
+    else:
+        edit_form = EditCustomerProfileForm(instance=request.user)
+    return render(request, 'prairiemartapp/edit-profile.html', {'edit':edit_form})
+
+
+
+
+>>>>>>> benedict
 
 
 def index(request, category_slug=None):
@@ -62,14 +104,10 @@ def category_list(request, category_slug=None):
     }
     return render(request, 'prairiemartapp/category_list.html',context)
 
-def login(request):
-    return render(request, 'prairiemartapp/login.html')
 
-def dashboard(request):
+def cutomer_dashboard(request):
     return render(request, 'prairiemartapp/dashboard.html')
 
 def show_cat(request):
     return render(request, 'prairiemartapp/show-cat.html')
-
-
 

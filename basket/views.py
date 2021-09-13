@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 
-from Store.models import Products
+from products.models import Products
 
 from .basket import Basket
 

@@ -16,6 +16,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=True)
     is_active = models.BooleanField(default=False)
     is_vendor = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False)
     profile = models.ImageField(null=True, blank=True, upload_to='uploads/')
     
 
@@ -31,4 +32,20 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         if self.profile:
             return self.profile.url
         else:
-            return 'image is here'
+            return '/static/dashboard/images/faces/avatar.png'
+
+    def get_priviledge(self):
+        if self.is_staff == True:
+            return 'Administrator'
+        elif self.is_vendor == True:
+            return 'Vendor'
+        else:
+            return 'Customer'
+
+    def activate_user(self):
+        self.is_active = True
+        self.save()
+
+    def deactivate_user(self):
+        self.is_active = False
+        self.save()

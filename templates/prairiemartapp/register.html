@@ -1,0 +1,48 @@
+{% extends 'prairiemartapp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block title%}
+Register
+{% endblock %}
+
+{% block content %}
+		<!-- MAIN -->
+		<main class="site-main">
+
+            <div class="columns container">
+                <!-- Block  Breadcrumb-->
+                        
+                <ol class="breadcrumb no-hide">
+                    <li><a href="#">Home    </a></li>
+                    <li><a href="#">Blog    </a></li>
+                    <li class="active">Ut pharetra augue nec augue integer rutrum ante eu lacus</li>
+                </ol><!-- Block  Breadcrumb-->
+
+                <h2 class="page-heading">
+                    <span class="page-heading-title2">Register</span>
+                </h2>
+
+                <div class="page-content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box-authentication">
+                                <h3>Create an account</h3>
+                                <form  method="POST">
+                                    <p>Please enter your email address to create an account.</p>
+                                    {% include 'dashboard/form-snippet.html' with form=form %}
+                                    <button type="submit" class="button"><i class="fa fa-user"></i> Create an account</button>
+                                    <a href="{% url 'dashboard:login_view' %}"> SignIn</a>
+                                </form>
+                                
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+
+
+		</main><!-- end MAIN -->
+
+{% endblock %}
