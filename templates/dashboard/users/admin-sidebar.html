@@ -1,0 +1,107 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+    <ul class="nav">
+      <li class="nav-item nav-profile">
+        <a href="#" class="nav-link">
+          <div class="profile-image">
+            <img class="img-xs rounded-circle" src="{{ request.user.get_profile }}" alt="{{ request.user.user_name }}">
+            <div class="dot-indicator bg-success"></div>
+          </div>
+          <div class="text-wrapper">
+            <p class="profile-name">{{ request.user.user_name }}</p>
+            <p class="designation">
+              {{ request.user.get_priviledge }}
+            </p>
+          </div>
+          <div class="icon-container">
+            <i class="icon-bubbles"></i>
+            <div class="dot-indicator bg-danger"></div>
+          </div>
+        </a>
+      </li>
+      
+      <li class="nav-item nav-category">
+        <a class="nav-link" href="{% url 'dashboard:admin_dashboard' %}">
+          <span class="menu-title">Dashboard</span>
+          <i class="icon-screen-desktop menu-icon"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#users" aria-expanded="false" aria-controls="users">
+          <span class="menu-title">Users</span>
+          <i class="icon-layers menu-icon"></i>
+        </a>
+        <div class="collapse" id="users">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:add_admin' %}">Add User</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{% url 'dashboard:list_users' %}">View Users</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#brands" aria-expanded="false" aria-controls="brands">
+            <span class="menu-title">Brands</span>
+            <i class="icon-layers menu-icon"></i>
+          </a>
+          <div class="collapse" id="brands">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="#">Add Brand</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">View Brands</a></li>
+            </ul>
+          </div>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#size" aria-expanded="false" aria-controls="size">
+            <span class="menu-title">Size</span>
+            <i class="icon-layers menu-icon"></i>
+          </a>
+          <div class="collapse" id="size">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="#">Add Size</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">View Sizes</a></li>
+            </ul>
+          </div>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
+            <span class="menu-title">Products</span>
+            <i class="icon-layers menu-icon"></i>
+          </a>
+          <div class="collapse" id="products">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_product' %}">Add Product</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'products:list_products' %}">View Products</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">Categories</a></li>
+            </ul>
+          </div>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#post" aria-expanded="false" aria-controls="post">
+            <span class="menu-title">Posts</span>
+            <i class="icon-layers menu-icon"></i>
+          </a>
+          <div class="collapse" id="post">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="#">Add Post</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">View Posts</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#">Categories</a></li>
+            </ul>
+          </div>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#orders" aria-expanded="false" aria-controls="orders">
+            <span class="menu-title">Orders</span>
+            <i class="icon-layers menu-icon"></i>
+          </a>
+          <div class="collapse" id="orders">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="#">View Orders</a></li>
+            </ul>
+          </div>
+      </li>
+     
+     
+      
+      
+     
+    </ul>
+  </nav>
