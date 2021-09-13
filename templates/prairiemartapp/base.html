@@ -1,14 +1,15 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>
+    <title>
         {% block title%}
 
         {% endblock%}
     </title>
 
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,6 +18,7 @@
 
 
 </head>
+
 <body class="cms-index-index index-opt-13">
 
     <div class="wrapper">
@@ -30,9 +32,11 @@
                     <ul class="nav-left">
                         <li><a href="{% url 'prairiemartapp:login' %}">Login</a></li>
                         <li><a href="">Register </a></li>
-                        <li><a href="" >Wishlist</a></li>
+                        <li><a href="">Wishlist</a></li>
                         <li class="dropdown switcher  switcher-currency">
-                            <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger"><span>USD</span> <i aria-hidden="true" class="fa fa-angle-down"></i></a>
+                            <a data-toggle="dropdown" role="button" href="#"
+                                class="dropdown-toggle switcher-trigger"><span>USD</span> <i aria-hidden="true"
+                                    class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu switcher-options ">
                                 <li class="switcher-option">
                                     <a href="#">
@@ -52,32 +56,37 @@
                             </ul>
                         </li>
                         <li class="dropdown switcher  switcher-language">
-                            <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger" aria-expanded="false">
-                                <img class="switcher-flag" alt="flag" src="{% static 'prairiemartapp/images/flags/flag_english.png' %}">
-                                <span>English</span> 
+                            <a data-toggle="dropdown" role="button" href="#" class="dropdown-toggle switcher-trigger"
+                                aria-expanded="false">
+                                <img class="switcher-flag" alt="flag"
+                                    src="{% static 'prairiemartapp/images/flags/flag_english.png' %}">
+                                <span>English</span>
                                 <i aria-hidden="true" class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu switcher-options ">
                                 <li class="switcher-option">
                                     <a href="#">
-                                        <img class="switcher-flag" alt="flag" src="{% static 'prairiemartapp/images/flags/flag_english.png' %}">English
+                                        <img class="switcher-flag" alt="flag"
+                                            src="{% static 'prairiemartapp/images/flags/flag_english.png' %}">English
                                     </a>
                                 </li>
                                 <li class="switcher-option">
                                     <a href="#">
-                                        <img class="switcher-flag" alt="flag" src="{% static 'prairiemartapp/images/flags/flag_french.png' %}">French
+                                        <img class="switcher-flag" alt="flag"
+                                            src="{% static 'prairiemartapp/images/flags/flag_french.png' %}">French
                                     </a>
                                 </li>
                                 <li class="switcher-option">
                                     <a href="#">
-                                        <img class="switcher-flag" alt="flag" src="{% static 'prairiemartapp/images/flags/flag_germany.png' %}">Germany
+                                        <img class="switcher-flag" alt="flag"
+                                            src="{% static 'prairiemartapp/images/flags/flag_germany.png' %}">Germany
                                     </a>
                                 </li>
                             </ul>
                         </li>
                     </ul>
 
-                    <ul class="nav-right" >
+                    <ul class="nav-right">
                         <li class="hotline"><span><i class="fa fa-phone"></i>Hotline: + 106 258 658</span></li>
                         <li class="top-social">
                             <span class="">
@@ -85,7 +94,7 @@
                                 <a title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
                                 <a title="Skype" href="#"><i class="fa fa-linkedin"></i></a>
                                 <a title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a>
-                            </span>           
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -100,13 +109,14 @@
                         <div class="nav-left">
                             <!-- logo -->
                             <strong class="logo">
-                                <a href=""><img src="{% static 'prairiemartapp/images/media/index13/logo.png' %}" alt="logo"></a>
+                                <a href=""><img src="{% static 'prairiemartapp/images/media/index13/logo.png' %}"
+                                        alt="logo"></a>
                             </strong><!-- logo -->
                         </div>
 
 
                         <div class="nav-mind">
-                            
+
                             <!-- block mini cart -->
                             <div class="block-minicart dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -120,7 +130,7 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <form>
-                                        <div  class="minicart-content-wrapper" >
+                                        <div class="minicart-content-wrapper">
                                             <div class="subtitle">
                                                 You have 6 item(s) in your cart
                                             </div>
@@ -128,7 +138,9 @@
                                                 <ol class="minicart-items">
                                                     <li class="product-item">
                                                         <a class="product-item-photo" href="#" title="The Name Product">
-                                                            <img class="product-image-photo" src="{% static 'prairiemartapp/images/media/index1/minicart.jpg' %}" alt="The Name Product">
+                                                            <img class="product-image-photo"
+                                                                src="{% static 'prairiemartapp/images/media/index1/minicart.jpg' %}"
+                                                                alt="The Name Product">
                                                         </a>
                                                         <div class="product-item-details">
                                                             <strong class="product-item-name">
@@ -138,7 +150,8 @@
                                                                 <span class="price">61,19 €</span>
                                                             </div>
                                                             <div class="product-item-qty">
-                                                                <span class="label">Qty: </span ><span class="number">1</span>
+                                                                <span class="label">Qty: </span><span
+                                                                    class="number">1</span>
                                                             </div>
                                                             <div class="product-item-actions">
                                                                 <a class="action delete" href="#" title="Remove item">
@@ -149,7 +162,9 @@
                                                     </li>
                                                     <li class="product-item">
                                                         <a class="product-item-photo" href="#" title="The Name Product">
-                                                            <img class="product-image-photo" src="{% static 'prairiemartapp/images/media/index1/minicart2.jpg' %}" alt="The Name Product">
+                                                            <img class="product-image-photo"
+                                                                src="{% static 'prairiemartapp/images/media/index1/minicart2.jpg' %}"
+                                                                alt="The Name Product">
                                                         </a>
                                                         <div class="product-item-details">
                                                             <strong class="product-item-name">
@@ -159,7 +174,8 @@
                                                                 <span class="price">61,19 €</span>
                                                             </div>
                                                             <div class="product-item-qty">
-                                                                <span class="label">Qty: </span ><span class="number">1</span>
+                                                                <span class="label">Qty: </span><span
+                                                                    class="number">1</span>
                                                             </div>
                                                             <div class="product-item-actions">
                                                                 <a class="action delete" href="#" title="Remove item">
@@ -208,8 +224,10 @@
                                     <div class="form-search">
                                         <form>
                                             <div class="box-group">
-                                                <input type="text" class="form-control" placeholder="Search your products">
-                                                <button class="btn btn-search" type="button"><span>search</span></button>
+                                                <input type="text" class="form-control"
+                                                    placeholder="Search your products">
+                                                <button class="btn btn-search"
+                                                    type="button"><span>search</span></button>
                                             </div>
                                         </form>
                                     </div>
@@ -218,7 +236,7 @@
 
                         </div>
 
-                    </div>                    
+                    </div>
 
                 </div>
             </div><!-- header-content -->
@@ -227,10 +245,13 @@
                 <div class="container">
                     <div class="box-header-nav">
 
-                        <span data-action="toggle-nav-cat" class="nav-toggle-menu nav-toggle-cat"><span>Categories</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+                        <span data-action="toggle-nav-cat"
+                            class="nav-toggle-menu nav-toggle-cat"><span>Categories</span><i aria-hidden="true"
+                                class="fa fa-bars"></i></span>
 
-                        <span data-action="toggle-nav" class="nav-toggle-menu"><span>Menu</span><i aria-hidden="true" class="fa fa-bars"></i></span>
-                        
+                        <span data-action="toggle-nav" class="nav-toggle-menu"><span>Menu</span><i aria-hidden="true"
+                                class="fa fa-bars"></i></span>
+
                         <!-- categori -->
                         <div class="block-nav-categori">
 
@@ -239,20 +260,24 @@
                             </div>
 
                             <div class="block-content">
-                                <div class="clearfix"><span data-action="close-cat" class="close-cate"><span>Categories</span></span></div>
+                                <div class="clearfix"><span data-action="close-cat"
+                                        class="close-cate"><span>Categories</span></span></div>
                                 <ul class="ui-categori">
                                     <li class="parent">
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat1.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat1.png' %}"
+                                                    alt="nav-cat"></span>
                                             Electronics
                                         </a>
                                         <span class="toggle-submenu"></span>
-                                        <div class="submenu" style="background-image: url(static/prairiemartapp/images/media/index1/bgmenu.jpg);">
+                                        <div class="submenu"
+                                            style="background-image: url(static/prairiemartapp/images/media/index1/bgmenu.jpg);">
                                             <ul class="categori-list clearfix">
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Smartphone</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -262,7 +287,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">TElevision</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -272,7 +297,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Camera</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -284,7 +309,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Smartphone</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -294,7 +319,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">TElevision</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -304,7 +329,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Camera</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -316,19 +341,23 @@
                                     </li>
                                     <li class="parent">
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat2.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat2.png' %}"
+                                                    alt="nav-cat"></span>
                                             Sports & Outdoors
                                         </a>
                                         <span class="toggle-submenu"></span>
                                         <div class="submenu">
                                             <div class="categori-img">
-                                                <a href=""><img src="{% static 'prairiemartapp/images/media/index1/categori-img1.jpg' %}" alt="categori-img"></a>
+                                                <a href=""><img
+                                                        src="{% static 'prairiemartapp/images/media/index1/categori-img1.jpg' %}"
+                                                        alt="categori-img"></a>
                                             </div>
                                             <ul class="categori-list">
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Smartphone</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -338,7 +367,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">TElevision</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -348,7 +377,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">Camera</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -358,7 +387,7 @@
                                                 <li class="col-sm-3">
                                                     <strong class="title"><a href="">washing machine</a></strong>
                                                     <ul>
-                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Skirts </a></li>
                                                         <li><a href="">Jackets</a></li>
                                                         <li><a href="">Jumpusuits</a></li>
                                                         <li><a href="">Scarvest</a></li>
@@ -370,19 +399,16 @@
                                     </li>
                                     <li class="parent">
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat3.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat3.png' %}"
+                                                    alt="nav-cat"></span>
                                             Smartphone & Tablets
                                         </a>
                                         <span class="toggle-submenu"></span>
                                         <div class="submenu">
                                             <strong class="subtitle"><span>special products</span></strong>
-                                            <div class="owl-carousel" 
-                                                data-nav="true" 
-                                                data-dots="false" 
-                                                data-margin="30" 
-                                                data-autoplayTimeout="300" 
-                                                data-autoplay="true" 
-                                                data-loop="true"
+                                            <div class="owl-carousel" data-nav="true" data-dots="false" data-margin="30"
+                                                data-autoplayTimeout="300" data-autoplay="true" data-loop="true"
                                                 data-responsive='{
                                                 "0":{"items":1},
                                                 "380":{"items":1},
@@ -390,56 +416,64 @@
                                                 "600":{"items":1},
                                                 "992":{"items":4}
                                                 }'>
-                                                
+
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="{% static 'prairiemartapp/images/media/index1/product-menu1.jpg' %}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                                    src="{% static 'prairiemartapp/images/media/index1/product-menu1.jpg' %}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Asus Ispiron 20</a></strong>
+                                                            <strong class="product-item-name"><a href="">Asus Ispiron
+                                                                    20</a></strong>
                                                             <div class="product-item-price">
                                                                 <span class="price">$45.00</span>
                                                             </div>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="{% static 'prairiemartapp/images/media/index1/product-menu2.jpg' %}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                                    src="{% static 'prairiemartapp/images/media/index1/product-menu2.jpg' %}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Electronics Ispiron 20 </a></strong>
+                                                            <strong class="product-item-name"><a href="">Electronics
+                                                                    Ispiron 20 </a></strong>
                                                             <div class="product-item-price">
                                                                 <span class="price">$45.00</span>
                                                             </div>
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="{% static 'prairiemartapp/images/media/index1/product-menu3.jpg' %}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                                    src="{% static 'prairiemartapp/images/media/index1/product-menu3.jpg' %}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Samsung Ispiron 20 </a></strong>
+                                                            <strong class="product-item-name"><a href="">Samsung Ispiron
+                                                                    20 </a></strong>
                                                             <div class="product-item-price">
                                                                 <span class="price">$45.00</span>
                                                             </div>
-                                                           
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="{% static 'prairiemartapp/images/media/index1/product-menu4.jpg' %}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                                    src="{% static 'prairiemartapp/images/media/index1/product-menu4.jpg' %}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Electronics Ispiron 20 </a></strong>
+                                                            <strong class="product-item-name"><a href="">Electronics
+                                                                    Ispiron 20 </a></strong>
                                                             <div class="product-item-price">
                                                                 <span class="price">$45.00</span>
                                                             </div>
@@ -449,78 +483,97 @@
                                                 <div class="product-item product-item-opt-1">
                                                     <div class="product-item-info">
                                                         <div class="product-item-photo">
-                                                            <a class="product-item-img" href=""><img alt="product name" src="{% static 'prairiemartapp/images/media/index1/product-menu4.jpg' %}"></a>
+                                                            <a class="product-item-img" href=""><img alt="product name"
+                                                                    src="{% static 'prairiemartapp/images/media/index1/product-menu4.jpg' %}"></a>
                                                         </div>
                                                         <div class="product-item-detail">
-                                                            <strong class="product-item-name"><a href="">Samsung Ispiron 20 </a></strong>
+                                                            <strong class="product-item-name"><a href="">Samsung Ispiron
+                                                                    20 </a></strong>
                                                             <div class="product-item-price">
                                                                 <span class="price">$45.00</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat4.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat4.png' %}"
+                                                    alt="nav-cat"></span>
                                             Health & Beauty
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat5.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat5.png' %}"
+                                                    alt="nav-cat"></span>
                                             Bags, Shoes & Accessories
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat6.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat6.png' %}"
+                                                    alt="nav-cat"></span>
                                             Toys & Hobbies
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat7.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat7.png' %}"
+                                                    alt="nav-cat"></span>
                                             Computers & Networking
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat8.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat8.png' %}"
+                                                    alt="nav-cat"></span>
                                             Laptops & Accessories
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat9.png' %}" alt="nav-cat"></span>
-                                           Jewelry  & Watches
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat9.png' %}"
+                                                    alt="nav-cat"></span>
+                                            Jewelry & Watches
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat10.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat10.png' %}"
+                                                    alt="nav-cat"></span>
                                             Flashlights & Lamps
                                         </a>
                                     </li>
                                     <li>
                                         <a href="">
-                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat11.png' %}" alt="nav-cat"></span>
+                                            <span class="icon"><img
+                                                    src="{% static 'prairiemartapp/images/icon/index3/nav-cat11.png' %}"
+                                                    alt="nav-cat"></span>
                                             Cameras & Photo
                                         </a>
                                     </li>
-                                    
+
                                 </ul>
-                               
+
                             </div>
-                            
+
                         </div><!-- categori -->
 
                         <!-- menu -->
                         <div class="block-nav-menu">
-                            <div class="clearfix"><span data-action="close-nav" class="close-nav"><span>close</span></span></div>
+                            <div class="clearfix"><span data-action="close-nav"
+                                    class="close-nav"><span>close</span></span></div>
                             <ul class="ui-menu">
                                 <li class="parent parent-megamenu active">
                                     <a href="{% url 'index' %}">Home</a>
@@ -566,8 +619,10 @@
                                             <li class="col-md-3">
                                                 <strong class="title"><a href=""><span>Page </span></a></strong>
                                                 <ul class="list-submenu">
-                                                    <li><a href="{% url 'prairiemartapp:category_grid' %}">Category 1</a></li>
-                                                    <li><a href="{% url 'prairiemartapp:category_list' %}">Category 2</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:category_grid' %}">Category
+                                                            1</a></li>
+                                                    <li><a href="category_list">Category
+                                                            2</a></li>
                                                     <li><a href="{% url 'prairiemartapp:product' %}">Product 1</a></li>
                                                     <li><a href="Product2.html">Product 2</a></li>
                                                     <li><a href="Product3.html">Product 3</a></li>
@@ -578,27 +633,29 @@
                                         </ul>
                                     </div>
                                 </li>
+                                {% for c in categories %}
                                 <li class="parent parent-submenu">
-                                    <a href="{% url 'prairiemartapp:contact' %}"> Fashion  </a>
+                                    <a href="{{ c.get_absolute_url }}">{{c.cat_name}}</a>
                                     <span class="toggle-submenu"></span>
                                     <div class="submenu drop-menu">
-                                        <ul >
-                                            <li><a href="">Shoes</a></li>
-                                            <li><a href="">Clothing</a></li>
-                                            <li><a href="">Accessories</a></li>
-                                            <li><a href="">Sunglasses</a></li>
+                                        <ul>
+                                            {% for b in brand %}
+                                            <li><a href="">{{b.brand_name}}</a></li>
+                                            {% endfor %}
                                         </ul>
                                     </div>
                                 </li>
+                                {% endfor %}
                                 <li><a href="">Sports <span class="label-menu">New</span></a></li>
                                 <li class="parent parent-megamenu">
-                                    <a href="">Electronics  </a>
+                                    <a href="">Electronics </a>
                                     <span class="toggle-submenu"></span>
                                     <div class="megamenu drop-menu">
                                         <ul>
                                             <li class="col-md-3">
                                                 <div class="img-categori">
-                                                    <a href=""><img alt="img" src="{% static 'prairiemartapp/images/media/index1/img-categori1.jpg' %}"></a>
+                                                    <a href=""><img alt="img"
+                                                            src="{% static 'prairiemartapp/images/media/index1/img-categori1.jpg' %}"></a>
                                                 </div>
                                                 <strong class="title"><a href=""><span>Women's </span></a></strong>
                                                 <ul class="list-submenu">
@@ -609,9 +666,10 @@
                                                 </ul>
                                             </li>
                                             <li class="col-md-3">
-                                               
+
                                                 <div class="img-categori">
-                                                    <a href=""><img  alt="img"  src="{% static 'prairiemartapp/images/media/index1/img-categori2.jpg' %}"></a>
+                                                    <a href=""><img alt="img"
+                                                            src="{% static 'prairiemartapp/images/media/index1/img-categori2.jpg' %}"></a>
                                                 </div>
                                                 <strong class="title"><a href=""><span>Women's </span></a></strong>
                                                 <ul class="list-submenu">
@@ -622,9 +680,10 @@
                                                 </ul>
                                             </li>
                                             <li class="col-md-3">
-                                                
+
                                                 <div class="img-categori">
-                                                    <a href=""><img alt="img"  src="{% static 'prairiemartapp/images/media/index1/img-categori3.jpg' %}"></a>
+                                                    <a href=""><img alt="img"
+                                                            src="{% static 'prairiemartapp/images/media/index1/img-categori3.jpg' %}"></a>
                                                 </div>
                                                 <strong class="title"><a href=""> <span>Kid's</span></a></strong>
                                                 <ul class="list-submenu">
@@ -635,9 +694,10 @@
                                                 </ul>
                                             </li>
                                             <li class="col-md-3">
-                                                
+
                                                 <div class="img-categori">
-                                                    <a href=""><img alt="img"  src="{% static 'prairiemartapp/images/media/index1/img-categori4.jpg' %}"></a>
+                                                    <a href=""><img alt="img"
+                                                            src="{% static 'prairiemartapp/images/media/index1/img-categori4.jpg' %}"></a>
                                                 </div>
                                                 <strong class="title"><a href=""><span>Trending</span> </a></strong>
                                                 <ul class="list-submenu">
@@ -656,7 +716,7 @@
                                     <div class="megamenu drop-menu">
                                         <ul>
                                             <li class="col-md-3">
-                                                
+
                                                 <strong class="title"><a href=""><span>Women's </span></a></strong>
                                                 <ul class="list-submenu">
                                                     <li><a href="">Shoes</a></li>
@@ -691,7 +751,7 @@
                                                 </ul>
                                             </li>
                                             <li class="col-md-3">
-                                                
+
                                                 <strong class="title"><a href=""> <span>Kid's</span></a></strong>
                                                 <ul class="list-submenu">
                                                     <li><a href="">Shoes</a></li>
@@ -710,30 +770,31 @@
                                             </li>
                                             <li class="col-md-3">
                                                 <div class="img-categori">
-                                                    <a href=""><img alt="img" src="{% static 'prairiemartapp/images/media/index1/img-categori5.jpg' %}"></a>
+                                                    <a href=""><img alt="img"
+                                                            src="{% static 'prairiemartapp/images/media/index1/img-categori5.jpg' %}"></a>
                                                 </div>
-                                               
+
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
-                                <li><a href="#"> Jewelry  </a></li>
+                                <li><a href="#"> Jewelry </a></li>
                                 <li><a href="Blog.html">Blog</a></li>
                             </ul>
 
                         </div><!-- menu -->
-                        
+
                     </div>
                 </div>
             </div>
 
-        </header><!-- end HEADER -->        
+        </header><!-- end HEADER -->
 
         <!-- MAIN -->
         {% block content%}
 
         {% endblock%}
-    
+
 
         <!-- FOOTER -->
         <footer class="site-footer footer-opt-12">
@@ -741,11 +802,11 @@
                 <div class="footer-column">
                     <div class="column-left">
                         <div class="row">
-                            
+
                             <div class="col-md-4  col-sm-4">
                                 <div class="links">
                                     <h3 class="title">Kuteshop</h3>
-                                    <ul >
+                                    <ul>
                                         <li><a href="#">About us</a></li>
                                         <li><a href="#">Customer Service</a></li>
                                         <li><a href="#">New Collection</a></li>
@@ -759,7 +820,7 @@
                             <div class="col-md-4  col-sm-4">
                                 <div class="links">
                                     <h3 class="title">products</h3>
-                                    <ul >
+                                    <ul>
                                         <li><a href="#">New In</a></li>
                                         <li><a href="#">Women</a></li>
                                         <li><a href="#">Men</a></li>
@@ -773,7 +834,7 @@
                             <div class="col-md-4  col-sm-4">
                                 <div class="links">
                                     <h3 class="title">customer service</h3>
-                                    <ul >
+                                    <ul>
                                         <li><a href="#">Advanced Search</a></li>
                                         <li><a href="#">Orders and Returns</a></li>
                                         <li><a href="#">Contact Us</a></li>
@@ -784,7 +845,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="column-right">
@@ -797,7 +858,7 @@
                                 <a href="" class="sh-google"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
                                 <a href="" class="sh-pinterest"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
                                 <a href="" class="sh-youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
-                                
+
                             </div>
                         </div>
                         <div class="block-newletter">
@@ -807,14 +868,15 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Your email address...">
                                         <span class="input-group-btn">
-                                            <button class="btn btn-subcribe" type="button"><span>subscrible</span></button>
+                                            <button class="btn btn-subcribe"
+                                                type="button"><span>subscrible</span></button>
                                         </span>
                                     </div>
                                 </form>
                             </div>
-                            
+
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="payment-methods">
@@ -835,91 +897,91 @@
                 </div>
                 <div class="footer-bottom">
 
-                    
+
 
                     <div class="links">
-                        
+
                         <ul>
                             <li><a href="">Online Shopping </a></li>
                             <li><a href="">Promotions </a></li>
-                            <li><a href="">My Orders  </a></li>
-                            <li><a href="">Help  </a></li>
+                            <li><a href="">My Orders </a></li>
+                            <li><a href="">Help </a></li>
                             <li><a href="">Site Map </a></li>
                             <li><a href="">Customer Service </a></li>
-                            <li><a href="">Support  </a></li>
+                            <li><a href="">Support </a></li>
                         </ul>
                         <ul>
                             <li><a href="">Most Populars </a></li>
-                            <li><a href="">Best Sellers  </a></li>
-                            <li><a href="">New Arrivals  </a></li>
-                            <li><a href="">Special Products  </a></li>
-                            <li><a href=""> Manufacturers     </a></li>
-                            <li><a href="">Our Stores   </a></li>
-                            <li><a href="">Shipping      </a></li>
-                            <li><a href="">Payments      </a></li>
-                            <li><a href="">Payments      </a></li>
-                            <li><a href="">Refunds  </a></li>
+                            <li><a href="">Best Sellers </a></li>
+                            <li><a href="">New Arrivals </a></li>
+                            <li><a href="">Special Products </a></li>
+                            <li><a href=""> Manufacturers </a></li>
+                            <li><a href="">Our Stores </a></li>
+                            <li><a href="">Shipping </a></li>
+                            <li><a href="">Payments </a></li>
+                            <li><a href="">Payments </a></li>
+                            <li><a href="">Refunds </a></li>
                         </ul>
                         <ul>
-                            <li><a href="">Terms & Conditions  </a></li>
-                            <li><a href="">Policy      </a></li>
-                            <li><a href="">Policy      </a></li>
-                            <li><a href=""> Shipping     </a></li>
-                            <li><a href="">Payments      </a></li>
-                            <li><a href="">Returns      </a></li>
-                            <li><a href="">Refunds      </a></li>
-                            <li><a href="">Warrantee      </a></li>
-                            <li><a href="">FAQ      </a></li>
-                            <li><a href="">Contact  </a></li>
+                            <li><a href="">Terms & Conditions </a></li>
+                            <li><a href="">Policy </a></li>
+                            <li><a href="">Policy </a></li>
+                            <li><a href=""> Shipping </a></li>
+                            <li><a href="">Payments </a></li>
+                            <li><a href="">Returns </a></li>
+                            <li><a href="">Refunds </a></li>
+                            <li><a href="">Warrantee </a></li>
+                            <li><a href="">FAQ </a></li>
+                            <li><a href="">Contact </a></li>
                         </ul>
                     </div>
-                    
+
                     <div class="copyright">
-                        
+
                         Copyright © 2015 KuteShop. All Rights Reserved. Designed by KuteThemes.com
-                       
+
                     </div>
 
                 </div>
 
             </div>
-        </footer><!-- end FOOTER -->        
-        
+        </footer><!-- end FOOTER -->
+
         <!--back-to-top  -->
         <a href="#" class="back-to-top">
             <i aria-hidden="true" class="fa fa-angle-up"></i>
         </a>
-        
+
     </div>
 
-    <!-- jQuery -->    
+    <!-- jQuery -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.min.js' %}"></script>
 
     <!-- sticky -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.sticky.js' %}"></script>
 
-    <!-- OWL CAROUSEL Slider -->    
+    <!-- OWL CAROUSEL Slider -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/owl.carousel.min.js' %}"></script>
 
-    <!-- Boostrap --> 
+    <!-- Boostrap -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/bootstrap.min.js' %}"></script>
 
-    <!-- Countdown --> 
+    <!-- Countdown -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.countdown.min.js' %}"></script>
 
     <!--jquery Bxslider  -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.bxslider.min.js' %}"></script>
-    
-    <!-- actual --> 
+
+    <!-- actual -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.actual.min.js' %}"></script>
 
-    <!-- Chosen jquery-->    
+    <!-- Chosen jquery-->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/chosen.jquery.min.js' %}"></script>
-    
-    <!-- parallax jquery--> 
+
+    <!-- parallax jquery-->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.parallax-1.1.3.js' %}"></script>
 
-    <!-- elevatezoom --> 
+    <!-- elevatezoom -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/jquery.elevateZoom.min.js' %}"></script>
 
     <!-- fancybox -->
@@ -929,9 +991,10 @@
 
     <!-- arcticmodal -->
     <script src="{% static 'prairiemartapp/js/arcticmodal/jquery.arcticmodal.js' %}"></script>
-    
-    <!-- Main -->  
+
+    <!-- Main -->
     <script type="text/javascript" src="{% static 'prairiemartapp/js/main.js' %}"></script>
 
 </body>
+
 </html>

@@ -32,12 +32,16 @@ class Category(models.Model):
         return self.cat_name
 
     class Meta():
+        verbose_name = 'category'
         verbose_name_plural = 'Category'
         ordering = ['-created',]
 
     def save(self, *args, **kwargs):
         self.cat_name = self.cat_name.capitalize()
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('prairiemartapp:category_list', args=[self.slug])
 
 class Brand(models.Model):
     brand_name = models.CharField(max_length=30, unique=True, verbose_name='Brand')
@@ -90,6 +94,7 @@ class Products(models.Model):
     size = models.ForeignKey(Size, related_name='product_size', null=True, blank=True, on_delete=models.CASCADE)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='product_creator')
     price = models.DecimalField(max_digits=9, decimal_places=2)
+    old_price = models.DecimalField(max_digits=9, decimal_places=2)
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     image1 = models.ImageField(upload_to='uploads/', blank=True, null=True)
