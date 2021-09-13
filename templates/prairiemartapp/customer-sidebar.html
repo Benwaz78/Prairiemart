@@ -1,0 +1,88 @@
+ {% load static %}
+ <!-- categori -->
+ <div class="block-nav-categori">
+
+    <div class="block-title">
+        <span>Categories</span>
+    </div>
+
+    <div class="block-content">
+        <ul class="ui-categori">
+            <li class="parent">
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat1.png' %}" alt="nav-cat"></span>
+                    Dashboard
+                </a>
+            </li>
+            <li class="parent">
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat3.png' %}" alt="nav-cat"></span>
+                    Account Details
+                </a>
+                <span class="toggle-submenu"></span>
+                <div class="submenu">
+                    <strong class="subtitle"><span> Account Details </span></strong>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="#">View Profile</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{% url 'prairiemartapp:edit_form' %}">Edit Profile</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{%  url 'prairiemartapp:change_password' %}">Change Password</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{%  url 'prairiemartapp:view_profile' %}">View Profile </a>
+                        </li>
+                    </ul> 
+                </div>
+            </li>
+            <li class="parent">
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat2.png' %}" alt="nav-cat"></span>
+                    Orders
+                </a>
+            </li>
+            <li class="parent">
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat3.png' %}" alt="nav-cat"></span>
+                    Downloads
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat4.png' %}" alt="nav-cat"></span>
+                   Addresses
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat6.png' %}" alt="nav-cat"></span>
+                   RMA Request
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat7.png' %}" alt="nav-cat"></span>
+                   Vendors
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat8.png' %}" alt="nav-cat"></span>
+                   Seller Support Tickets
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat9.png' %}" alt="nav-cat"></span>
+                  Logout
+                </a>
+            </li>
+            
+        </ul>
+       
+    </div>
+    
+</div><!-- categori -->

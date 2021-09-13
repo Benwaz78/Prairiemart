@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 {% block title%}
-Dashboard
+Edit Profile
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,6 @@ Dashboard
             <div class="block-section-top block-section-top13" style="margin-top:2%" >
                 <div class="container" >
                     <div class="box-section-top" >
-
                        {% include 'prairiemartapp/customer-sidebar.html' %}
                         <!-- block slide top -->
                         <div>
@@ -27,10 +26,14 @@ Dashboard
                             {% include 'prairiemartapp/customer-header.html' %}
                             <div class="product-item-photo text-dark">
 
-                               content
-                                
+                               <form method="post">
+                                   <div class="box-authentication">
+                                    {% include 'dashboard/form-snippet.html' with form=edit %}
+                                    <button type="submit" class="button">Edit Profile</button>
+                                    <a href="{% url 'prairiemartapp:edit_form' %}">View Profile</a>
+                                   </div>
+                               </form>
                             </div>   
-                        
                         </div>
                         {% include 'prairiemartapp/confirm-logout.html' %}
                        

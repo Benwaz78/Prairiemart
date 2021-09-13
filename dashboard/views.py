@@ -23,11 +23,15 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(request, email=email, password=password)
         if user is not None:
-            login(request, user)
-            return redirect('dashboard:admin_dashboard')
+            if user.is_staff == True or user.is_vendor == True:
+                login(request, user)
+                return redirect('dashboard:admin_dashboard')
+            else:
+                login(request, user)
+                return redirect('prairiemartapp:cutomer_dashboard')
         else:
             messages.error(request, 'Email and Password do not match')
-    return render(request, 'auth/login.html')
+    return render(request, 'prairiemartapp/login.html')
 
 
 @login_required(login_url='/dashboard/')
@@ -113,11 +117,10 @@ class DeleteUser(LoginRequiredMixin, DeleteView):
 
 class AddVendorView(SuccessMessageMixin, CreateView):
     model= CustomUser
-    template_name = 'auth/register-vendor.html'
+    template_name = 'prairiemartapp/register-vendor.html'
     form_class = AddAdmin
     success_message = 'You have registered successfully'
     success_url = reverse_lazy('dashboard:add_vendor')
-
     def form_valid(self, form):
         form.instance.is_staff = False
         form.instance.is_vendor = True
@@ -147,6 +150,19 @@ def deactivate_user(request, user_id):
     get_user = get_object_or_404(CustomUser, id=user_id)
     get_user.deactivate_user()
     return redirect('dashboard:list_users')
+
+
+class RegisterCustomerView(SuccessMessageMixin, CreateView):
+    model= CustomUser
+    template_name = 'prairiemartapp/register.html'
+    form_class = RegisterCustomerForm
+    success_message = 'You have registered successfully'
+    success_url = reverse_lazy('dashboard:reg_customer')
+    def form_valid(self, form):
+        form.instance.is_staff = False
+        form.instance.is_vendor = False
+        form.instance.is_active = True
+        return super().form_valid(form)
 
 
 

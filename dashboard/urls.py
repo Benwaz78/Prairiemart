@@ -11,26 +11,25 @@ urlpatterns = [
     path('logout-page/', views.logout_user, name='logout_user'),
     path(
       'reset-password/',
-      auth_views.PasswordResetView.as_view(template_name='auth/forget-password.html', 
+      auth_views.PasswordResetView.as_view(template_name='prairiemartapp/forget-password.html', 
        email_template_name='auth/password-reset-email.html', 
        extra_context={'reset':CustomPasswordResetForm},
       success_url = reverse_lazy('dashboard:password_reset_done')), name='password_reset'
    ),
      path(
         'password-reset-done/',
-        auth_views.PasswordResetDoneView.as_view(template_name='auth/password-reset-done.html'),
+        auth_views.PasswordResetDoneView.as_view(template_name='prairiemartapp/password-reset-done.html'),
         name='password_reset_done'
      ),
 
      path(
         'password-reset/<uidb64>/<token>/',
-        auth_views.PasswordResetConfirmView.as_view(template_name='auth/password-confirm-form.html',
-        extra_context={'con':CustomSetPasswordForm},
+        auth_views.PasswordResetConfirmView.as_view(template_name='prairiemartapp/password-confirm-form.html',
         success_url = reverse_lazy('dashboard:password_reset_complete'), form_class=CustomSetPasswordForm), name='password_reset_confirm'
      ),
       path(
         'password-reset-complete/',
-        auth_views.PasswordResetCompleteView.as_view(template_name='auth/password-reset-complete.html'), 
+        auth_views.PasswordResetCompleteView.as_view(template_name='prairiemartapp/password-reset-complete.html'), 
         name='password_reset_complete'
      ),
    
@@ -41,6 +40,7 @@ urlpatterns = [
     path('view-profile/', views.view_profile, name='view_profile'),
     path('edit-vendor-profile/', views.edit_vendor_profile_form, name='edit_vendor_profile_form'),
     path('register-vendor/', views.AddVendorView.as_view(), name='add_vendor'),
+    path('register-customer/', views.RegisterCustomerView.as_view(), name='reg_customer'),
     path('list-users/', views.ListUsers.as_view(), name='list_users'),
     path('single-user/<int:pk>/', views.SingleUser.as_view(), name='single_user'),
     path('delete-user/<int:pk>/', views.DeleteUser.as_view(), name='delete_user'),

@@ -1,6 +1,1 @@
-1. Continue work on edit profile view
-2. Do view profile
-3. Do add vendor
-4. Do View Users
-5. Add Products
-6. View Products
+8. Customer View Details

@@ -30,6 +30,29 @@ class ChangePasswordForm(PasswordChangeForm):
     botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
 
+class RegisterCustomerForm(UserCreationForm):
+    email = forms.CharField(label='Email*', widget=forms.EmailInput(attrs={'class':'form-control', 'placeholder':'Email'}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username'}))
+    password1 = forms.CharField(label='Password*', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Password'}))
+    password2 = forms.CharField(label='Confirm Password*', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Confirm Password'}))
+    class Meta():
+        model = CustomUser
+        fields = ('email', 'username', 'password1', 'password2')
+    
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.username = self.cleaned_data['username']
+        user.email = self.cleaned_data['email']
+        if commit:
+            user.save()
+            return user
+
+    
+
+
+
+
 class AddAdmin(UserCreationForm):
     user_name = forms.CharField(label='Username*', widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Username'}))
     password1 = forms.CharField(label='Enter Password*', widget=forms.PasswordInput(attrs={'class':'form-control', 'placeholder':'Enter Password'}))
