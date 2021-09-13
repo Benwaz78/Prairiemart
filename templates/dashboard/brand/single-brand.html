@@ -1,0 +1,63 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+{{ single_brand.brand_name }}
+{% endblock %}
+   
+
+
+{% block content %}
+<div class="page-header">
+        <h3>{{ single_brand.brand_name }}</h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img src="{{ single_brand.show_cat_img }}" class="img-fluid" alt="">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <table class="table table-bordred">
+                            <tr>
+                                <th>Fields</th>
+                                <th>Data</th>
+                            </tr>
+                            {% if single_brand %}
+                                <tr>
+                                    <td>Brand Name</td>
+                                    <td>{{ single_brand.brand_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Brand Image</td>
+                                    <td> <img src="{{ single_brand.show_cat_img }" alt=" {{ single_brand.brand_img}}">}</td>
+                                    <i class="icon-note text-primary"></i>
+
+                                </tr>
+                                
+                           {% endif %}
+                            
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="{% url 'products:add_brand' %}" class="btn btn-primary">Add Brand</a>
+                        {% if single_brand %}
+                        <a href="{% url 'products:edit_brand' single_brand.id %}" class="btn btn-primary">Edit Brand</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}

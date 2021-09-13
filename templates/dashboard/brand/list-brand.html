@@ -1,0 +1,64 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   List Brands
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h3>Brands</h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <a href="{% url 'products:add_brand' %}" class="btn btn-primary mb-2">Add Brand</a>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>SN</th>
+                        <th>Brand Name</th>
+                        <th>Image</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+
+                    {% if list_brands %}
+                        {% for p in list_brands %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ p.brand_name }}</td>
+                                <td>
+                                    <img src="{{ p.show_cat_img }}" alt=" {{ p.brand_img }}">
+                                    <i class="icon-note text-primary"></i>
+
+                                </td>
+                                <td>
+                                    <a href="{% url 'products:edit_brand' p.id %}" title="Edit Brand">
+                                        <i class="icon-note text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'products:single_brand' p.id %}" title="View Brand">
+                                        <i class="icon-eye  text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#confirmDel{{ p.id }}"  data-toggle="modal" title="Delete Brand">
+                                        <i class="icon-trash  text-primary"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% include 'dashboard/brand/confirm-brand-delete.html' %}
+                            
+                        {% endfor %}
+                    {% endif %}
+                </table>
+               {% include 'dashboard/pagination-template.html' %}
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+</script>
+{% endblock %}
