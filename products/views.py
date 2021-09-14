@@ -97,10 +97,6 @@ class SingleBrand(LoginRequiredMixin, DetailView):
     template_name = 'dashboard/brand/single-brand.html'
     context_object_name = 'single_product'
 
-
-
-# Size views
-
 class SizeFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = '/dashboard/'
     model = Size
