@@ -62,6 +62,9 @@ class Brand(models.Model):
         self.cat_name = self.brand_name.capitalize()
         return super().save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('products:single_brand', kwargs={'slug':self.slug})
+
 
 class Size(models.Model):
     size = models.CharField(max_length=15, unique=True, help_text='Size Name')

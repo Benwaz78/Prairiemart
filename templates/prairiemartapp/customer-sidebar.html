@@ -24,16 +24,13 @@
                     <strong class="subtitle"><span> Account Details </span></strong>
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="#">View Profile</a>
+                            <a href="{%  url 'prairiemartapp:view_profile' %}">View Profile</a>
                         </li>
                         <li class="list-group-item">
                             <a href="{% url 'prairiemartapp:edit_form' %}">Edit Profile</a>
                         </li>
                         <li class="list-group-item">
                             <a href="{%  url 'prairiemartapp:change_password' %}">Change Password</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="{%  url 'prairiemartapp:view_profile' %}">View Profile </a>
                         </li>
                     </ul> 
                 </div>
@@ -75,7 +72,7 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="#customerLogout" data-toggle="modal" >
                     <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat9.png' %}" alt="nav-cat"></span>
                   Logout
                 </a>
