@@ -1,3 +1,4 @@
+from products.views import BrandListView
 from django.urls import path
 from products import views
 
@@ -9,5 +10,6 @@ urlpatterns = [
     path('edit-product/<int:pk>/', views.UpdateProduct.as_view(), name='edit_product'),
     path('delete-product/<int:pk>/', views.DeleteProduct.as_view(), name='delete_product'),
     path('single-product/<int:pk>/', views.SingleProduct.as_view(), name='single_product'),
+    path('brand/<brands>/', BrandListView.as_view(), name='brands'),
     
 ]

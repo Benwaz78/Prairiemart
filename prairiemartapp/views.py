@@ -6,6 +6,10 @@ from prairiemartapp.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
+from products.models import *
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Count, Q
+from products.forms import *
 
 
 @login_required(login_url='/dashboard/')                                                                                                                                                                                                                                                                                                                                                                                                                            
@@ -42,7 +46,7 @@ def edit_form(request):
 
 
 def index(request):
-    return render(request, 'prairiemartapp//index.html')
+    return render(request, 'prairiemartapp/index.html')
 
 def about(request):
     return render(request, 'prairiemartapp/about.html')
@@ -73,7 +77,23 @@ def wishlist(request):
     return render(request, 'prairiemartapp/wishlist.html')
 
 def category_grid(request):
-    return render(request, 'prairiemartapp/category_grid.html')
+    products = Products.objects.filter()
+    brand = Brand.objects.order_by('created')
+    size = Size.objects.order_by('created')
+    paginated_filter = Paginator(products, 16)
+    page_number = request.GET.get('page')
+    person_page_obj = paginated_filter.get_page(page_number)
+
+    context = {
+        'brands':brand,
+        'size':size,
+        'person_page_obj': products,
+       
+    }
+
+    context['person_page_obj'] = person_page_obj  
+    person_page_obj = paginated_filter.get_page(page_number)
+    return render(request, 'prairiemartapp/category_grid.html', context)
 
 def category_list(request):
     return render(request, 'prairiemartapp/category_list.html')
@@ -85,3 +105,25 @@ def cutomer_dashboard(request):
 def show_cat(request):
     return render(request, 'prairiemartapp/show-cat.html')
 
+def filtersearch(request):
+    products = Products.objects.filter()
+    paginated_filter = Paginator(products, 16)
+    page_number = request.GET.get('page')
+    person_page_obj = paginated_filter.get_page(page_number)
+    if request.method == 'GET':
+        query_form = FilterForm(request.GET)
+        if query_form.is_valid():
+            print('Correct')
+            prod_name = query_form.cleaned_data.get('prod_name')
+            category = query_form.cleaned_data.get('category')
+            query = Products.objects.filter(prod_name=prod_name, category=category )
+            context = {
+            'person_page_obj': products,
+            'q': query,
+        }
+            context['person_page_obj'] = person_page_obj  
+            person_page_obj = paginated_filter.get_page(page_number)
+            return render(request, 'prairiemartapp/search_results.html', context)
+        else:
+            print('Not found')
+    return render(request, 'prairiemartapp/search_results2.html')

@@ -76,3 +76,19 @@ class ProductForm(forms.ModelForm):
 
 
 
+class FilterForm(forms.ModelForm):
+    prod_name = forms.CharField(label='Product Name*', widget=forms.TextInput(
+        attrs={'class':'form-control', 'placeholder':'Product Name'}
+    ))
+    category = forms.ModelChoiceField(
+        label='Product Category*',
+		queryset=Category.objects.all(), 
+		widget=forms.Select(attrs={'class': 'categori-search-option'}),
+		empty_label='Select Category'
+		)
+
+
+    class Meta():
+        fields = ['prod_name', 'category']
+        model = Products
+    

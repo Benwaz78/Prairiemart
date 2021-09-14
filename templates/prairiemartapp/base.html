@@ -185,32 +185,33 @@
                             <!-- block mini cart -->
 
                             <!-- search -->
+                           
                             <div class="block-search">
+                               
                                 <div class="block-title">
                                     <span>Search</span>
                                 </div>
+                                
                                 <div class="block-content">
+                                    <form method="GET" action="{% url 'prairiemartapp:filtersearch' %}">
                                     <div class="categori-search  ">
-                                        <select data-placeholder="All Categories" class="categori-search-option">
-                                            <option>All Categories</option>
-                                            <option>Fashion</option>
-                                            <option>Tops Blouses</option>
-                                            <option>Clothing</option>
-                                            <option>Furniture</option>
-                                            <option>Bathtime Goods</option>
-                                            <option>Shower Curtains</option>
-                                        </select>
+                                        {{ queryf.category }}
                                     </div>
                                     <div class="form-search">
-                                        <form>
-                                            <div class="box-group">
-                                                <input type="text" class="form-control" placeholder="Search your products">
-                                                <button class="btn btn-search" type="button"><span>search</span></button>
-                                            </div>
-                                        </form>
+                                       
+                                        <div class="box-group">
+                                            {{ queryf.prod_name }}
+                                            <button class="btn btn-search"  id="submit" type="submit"><span>search</span></button>
+                                            
+                                        </div>
+                                            
+                                        
                                     </div>
+                                    </form>
                                 </div>
+                                
                             </div>
+                            
 
                         </div>
 

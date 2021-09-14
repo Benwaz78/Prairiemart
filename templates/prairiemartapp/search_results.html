@@ -1,0 +1,254 @@
+{% extends 'prairiemartapp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block title%}
+Results
+{% endblock %}
+
+{% block content %}
+
+
+	<!-- MAIN -->
+    <main class="site-main">
+
+        <div class="columns container">
+            <!-- Block  Breadcrumb-->
+                    
+            <ol class="breadcrumb no-hide">
+                <li><a href="#">Home    </a></li>
+                <li><a href="#">Electronicsoooooooooooo</a></li>
+                <li class="active">Machine Pro</li>
+            </ol><!-- Block  Breadcrumb-->
+
+            <div class="row">
+
+                <!-- Main Content -->
+                <div class="col-md-9 col-md-push-3  col-main">
+
+                   
+
+                    <!-- link categori -->
+                    <ul class="category-links">
+                        <li class="current-cate"><a href="">All Products</a></li>
+                        <li><a href="">Tops</a></li>
+                        <li><a href="">Dresses</a></li>
+                        <li><a href="">Bags & Shoes</a></li>
+                        <li><a href="">Scaves</a></li>
+                        <li><a href="">Pants</a></li>
+                        <li><a href="">Blouses</a></li>
+                    </ul><!-- link categori -->
+
+                    <!-- Toolbar -->
+                    <div class=" toolbar-products toolbar-top">
+
+                        <div class="btn-filter-products">
+                            <span>Filter</span>
+                        </div>
+
+                        <h1 class="cate-title">Electronics</h1>
+
+                        <div class="modes">
+                            <strong  class="label">View as:</strong>
+                            <strong  class="modes-mode active mode-grid" title="Grid">
+                                <span>grid</span>
+                            </strong>
+                            <a  href="Category2.html" title="List" class="modes-mode mode-list">
+                                <span>list</span>
+                            </a>
+                        </div><!-- View as -->
+                       
+                        <div class="toolbar-option">
+
+                            <div class="toolbar-sorter ">
+                                <label    class="label">Short by:</label>
+                                <select class="sorter-options form-control" >
+                                    <option selected="selected" value="position">Position</option>
+                                    <option value="name">Name</option>
+                                    <option value="price">Price</option>
+                                </select>
+                                <a href="" class="sorter-action"></a>
+                            </div><!-- Short by -->
+
+                            <div class="toolbar-limiter">
+                                <label   class="label">
+                                    <span>Show:</span>
+                                </label>
+                               
+                                <select class="limiter-options form-control" >
+                                    <option selected="selected" value="9">Show 18</option>
+                                    <option value="15">Show 15</option>
+                                    <option value="30">Show 30</option>
+                                </select>
+                                
+                            </div><!-- Show per page -->
+
+                        </div>
+
+                         
+                        <ul class="pagination">
+                            {% if person_page_obj.has_previous %}
+                            <li>
+                              <a href="?page={{ person_page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&raquo; Previous </span>
+                              </a>
+                            </li>
+                            {% endif %}
+                            {% for i in person_page_obj.paginator.page_range %}
+                            {% if movies.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                             {% endfor %}
+                            {% if person_page_obj.has_next %}
+                            <li>
+                              <a href="?page={{ person_page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">Next &raquo;</span>
+                              </a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                            </li>
+                            {% endif %}
+                          </ul>
+
+
+                    </div><!-- Toolbar -->
+
+                    <!-- List Products -->
+                    <div class="products  products-grid">
+                        <ol class="product-items row">
+                            {% if not q %}
+                            noresult
+                            {% else %}
+                            {% if q %}
+                            {% for t in q %}
+                            <li class="col-sm-4 product-item ">
+                                <div class="product-item-opt-1">
+                                    <div class="product-item-info">
+                                        <div class="product-item-photo">
+                                            <a href="" class="product-item-img"><img src="{{ t.show_image1 }}" alt="product name"></a>
+                                            <div class="product-item-actions">
+                                                <a href="" class="btn btn-wishlist"><span>wishlist</span></a>
+                                                <a href="" class="btn btn-compare"><span>compare</span></a>
+                                                <a href="" class="btn btn-quickview"><span>quickview</span></a>
+                                            </div>
+                                            <button class="btn btn-cart" type="button"><span>Add to Cart</span></button>
+                                            <span class="product-item-label label-price">30% <span>off</span></span>
+                                        </div>
+                                        <div class="product-item-detail">
+                                            <strong class="product-item-name"><a href="">{{ t.prod_name }}</a></strong>
+                                            <div class="clearfix">
+                                                <div class="product-item-price">
+                                                    <span class="price">$45.00</span>
+                                                    <span class="old-price">$52.00</span>
+                                                </div>
+                                                <div class="product-reviews-summary">
+                                                    <div class="rating-summary">
+                                                        <div class="rating-result" title="80%">
+                                                            <span style="width:80%">
+                                                                <span><span>80</span>% of <span>100</span></span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            
+                            {% endfor %}
+                            {% endif %}
+                            {% endif %}
+                            
+                        </ol><!-- list product -->
+                    </div> <!-- List Products -->
+
+                    <!-- Toolbar -->
+                    <div class=" toolbar-products toolbar-bottom">
+
+                        <div class="modes">
+                            <strong  class="label">View as:</strong>
+                            <strong  class="modes-mode active mode-grid" title="Grid">
+                                <span>grid</span>
+                            </strong>
+                            <a  href="Category2.html" title="List" class="modes-mode mode-list">
+                                <span>list</span>
+                            </a>
+                        </div><!-- View as -->
+                       
+                        <div class="toolbar-option">
+
+                            <div class="toolbar-sorter ">
+                                <label    class="label">Short by:</label>
+                                <select class="sorter-options form-control" >
+                                    <option selected="selected" value="position">Product name</option>
+                                    <option value="name">Name</option>
+                                    <option value="price">Price</option>
+                                </select>
+                                <a href="" class="sorter-action"></a>
+                            </div><!-- Short by -->
+
+                            <div class="toolbar-limiter">
+                                <label   class="label">
+                                    <span>Show:</span>
+                                </label>
+                               
+                                <select class="limiter-options form-control" >
+                                    <option selected="selected" value="9"> Show 18</option>
+                                    <option value="15">Show 15</option>
+                                    <option value="30">Show 30</option>
+                                </select>
+                                
+                            </div><!-- Show per page -->
+
+                        </div>
+
+                        
+                        <ul class="pagination">
+                            {% if person_page_obj.has_previous %}
+                            <li>
+                              <a href="?page={{ person_page_obj.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&raquo; Previous </span>
+                              </a>
+                            </li>
+                            {% endif %}
+                            {% for i in person_page_obj.paginator.page_range %}
+                            {% if movies.number == i %}
+                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                             {% endfor %}
+                            {% if person_page_obj.has_next %}
+                            <li>
+                              <a href="?page={{ person_page_obj.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">Next &raquo;</span>
+                              </a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                            </li>
+                            {% endif %}
+                          </ul>
+
+
+                    </div><!-- Toolbar -->
+
+                </div><!-- Main Content -->
+                
+              
+
+                
+                
+            </div>
+        </div>
+
+
+    </main><!-- end MAIN -->
+
+{% endblock %}

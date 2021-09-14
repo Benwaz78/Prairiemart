@@ -1,5 +1,7 @@
+from basket.context_processors import *
+from unicodedata import name
 from django.forms import models
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from products.models import *
 from products.forms import *
 
@@ -61,4 +63,14 @@ class SingleProduct(LoginRequiredMixin, DetailView):
     context_object_name = 'single_product'
 
 
+class BrandListView(ListView):
+    template_name = 'priariemartapp/brand-category.html'
 
+    def get_queryset(self):
+        self.brand = get_object_or_404(Brand, brand_name=self.kwargs['brand'])
+        return Products.objects.filter(brand=self.brand)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['brand'] = self.brand
+        return context
