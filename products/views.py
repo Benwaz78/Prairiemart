@@ -70,6 +70,11 @@ class BrandFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = 'Brand added successfully'
     form_class = BrandForm
 
+    def form_valid(self, brand):
+        randomize = random.randint(0, 999999999999)
+        concate = f'{randomize}-{brand.instance.brand_name}'
+        brand.instance.slug = slugify(concate)
+        return super().form_valid(brand)
 
 class UpdateBrand(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
@@ -108,6 +113,11 @@ class SizeFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('products:add_size')
     success_message = 'Size added successfully'
     form_class = SizeForm
+    def form_valid(self, size):
+        randomize = random.randint(0, 999999999999)
+        concate = f'{randomize}-{size.instance.size}'
+        size.instance.slug = slugify(concate)
+        return super().form_valid(size)
 
 
 class UpdateSize(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
@@ -128,7 +138,7 @@ class ListSizes(LoginRequiredMixin, ListView):
 class DeleteSize(LoginRequiredMixin, DeleteView):
     login_url = '/dashboard/'
     model = Size
-    success_url = reverse_lazy('products:list_size')
+    success_url = reverse_lazy('products:list_sizes')
 
 class SingleSize(LoginRequiredMixin, DetailView):
     login_url = '/dashboard/'

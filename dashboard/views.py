@@ -23,7 +23,10 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(request, email=email, password=password)
         if user is not None:
-            if user.is_staff == True or user.is_vendor == True:
+            if user.is_staff == True:
+                login(request, user)
+                return redirect('dashboard:admin_dashboard')
+            elif user.is_vendor == True:
                 login(request, user)
                 return redirect('dashboard:admin_dashboard')
             else:

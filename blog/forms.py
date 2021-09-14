@@ -21,12 +21,12 @@ class PostForm(forms.ModelForm):
     category = forms.ModelMultipleChoiceField(
 		queryset=Category.objects.all(), 
 		widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
-		empty_label='Select Category'
+		label='Select Category'
 		)
     content = forms.CharField(
         label = 'Content',
         widget = forms.Textarea(
-            attrs = {'class';'form-control'}
+            attrs = {'class':'form-control'}
         )
     )
 
