@@ -70,6 +70,14 @@
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_product' %}">Add Product</a></li>
               <li class="nav-item"> <a class="nav-link" href="{% url 'products:list_products' %}">View Products</a></li>
+              <div class="row">
+                  <div class="col-lg-5">
+                    <a class="nav-link" href="{% url 'products:add_brand' %}">Add Brand</a><a class="nav-link" href="{% url 'products:add_size' %}">Add Size</a>
+                  </div>
+                  <div class="col-lg-5">
+                    <a class="nav-link" href="{% url 'products:list_brands' %}">List Brand</a><a class="nav-link" href="{% url 'products:list_sizes' %}">View Sizes</a>
+                  </div>
+              </div>
               <li class="nav-item"> <a class="nav-link" href="{% url 'products:prod_cat' %}">Categories</a></li>
             </ul>
           </div>
@@ -83,7 +91,7 @@
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{% url 'blog:add_post' %}">Add Post</a></li>
               <li class="nav-item"> <a class="nav-link" href="{% url 'blog:list_posts' %}">View Posts</a></li>
-              <li class="nav-item"> <a class="nav-link" href="#">Categories</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'blog:post_cat' %}">Categories</a></li>
             </ul>
           </div>
       </li>

@@ -64,3 +64,42 @@ class SinglePost(LoginRequiredMixin, DetailView):
     template_name = 'dashboard/posts/single-post.html'
     context_object_name = 'single_post'
 
+
+class PostCategoryFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    login_url = '/dashboard/'
+    model = Post
+    paginate_by = 4
+    template_name = 'dashboard/category-post/add-edit-category-post.html'
+    success_url = reverse_lazy('blog:post_cat')
+    success_message = 'Category added successfully'
+    form_class = PostCategoryForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_post'] = Category.objects.all()
+        return context
+
+
+    def form_valid(self, cat):
+        randomize = random.randint(0, 999999999999)
+        concate = f'{randomize}-{cat.instance.cat_name}'
+        cat.instance.slug = slugify(concate)
+        return super().form_valid(cat)
+
+class UpdatePostCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    login_url = '/dashboard/'
+    model = Category
+    success_url = reverse_lazy('backend:edit_cat')
+    success_message = 'Category edited successfully'
+    form_class = PostCategoryForm
+    template_name = 'dashboard/category-post/add-edit-category-post.html'
+
+    
+
+class DeleteCategory(LoginRequiredMixin, DeleteView):
+    login_url = '/dashboard/'
+    model = Category
+    success_url = reverse_lazy('blog:post_cat')
+
+# Product Category views ends here
+

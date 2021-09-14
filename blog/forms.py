@@ -33,3 +33,20 @@ class PostForm(forms.ModelForm):
     class Meta():
         model = Post
         exclude = ('created','time','user','slug',)
+
+
+class PostCategoryForm(forms.ModelForm):
+    cat_name = forms.CharField(
+        label='Category Name*',
+        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Category Name'})
+    )
+    cat_name = forms.CharField(
+        label='Category Description*',
+        widget=forms.Textarea(attrs={'class':'form-control', 'placeholder':'Category Description'})
+    )
+    
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+
+    class Meta():
+        model = Category
+        fields = '__all__'

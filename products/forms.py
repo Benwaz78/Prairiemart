@@ -109,6 +109,14 @@ class BrandForm(forms.ModelForm):
     )
     botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
+
+
+    def clean_brand_name(self):
+        brand = self.cleaned_data['brand_name'].capitalize()
+        if Brand.objects.filter(brand_name=brand).exists():
+            raise forms.ValidationError('Brand already exist')  
+        return brand
+
     class Meta():
         model = Brand
         exclude = ('slug','created')
@@ -122,6 +130,15 @@ class SizeForm(forms.ModelForm):
         )
     )
     botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+
+
+
+    def clean_size(self):
+        size = self.cleaned_data['size'].capitalize()
+        if Size.objects.filter(size=size).exists():
+            raise forms.ValidationError('Size already exist')  
+        return size
+
 
     class Meta():
         model = Size
