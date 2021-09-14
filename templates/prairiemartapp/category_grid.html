@@ -1000,10 +1000,10 @@ Category_grid
                                     <div class="filter-options-title">BRAND</div>
                                     <div class="filter-options-content">
                                         <ol class="items">
-                                         {% for b in brands %}
+                                         {% for b in brand %}
                                             <li class="item ">
                                                 <label>
-                                                    <input type="checkbox"><a href="{% url 'products:brands' %}"><span> {{b.brand_name }}<span class="count">(20)</span> </span></a>
+                                                    <input type="checkbox"><a href=""><span> {{ b.brand_name }}<span class="count">(20)</span> </span></a>
                                                 </label>
                                             </li>
                                             {% endfor %}
@@ -1011,107 +1011,6 @@ Category_grid
                                     </div>
                                 </div><!-- Filter Item -->
 
-                                <!-- filter color-->
-                                <div class="filter-options-item filter-options-color">
-                                    <div class="filter-options-title">COLOR</div>
-                                    <div class="filter-options-content">
-                                        <ol class="items">
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #fca53c;"></span>          
-                                                        <span class="count">(30)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #6b5a5c;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #000000;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #3063f2;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #f9334a;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #964b00;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #faebd7;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #e84c3d;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                            <li class="item">
-                                                <label>
-                                                    <input type="checkbox">
-                                                    <span>
-                                                        <span class="img" style="background-color: #fccacd;"></span>          
-                                                        <span class="count">(20)</span>
-                                                    </span>
-                                                    
-                                                </label>
-                                            </li>
-                                           
-                                        </ol>
-                                    </div>
-                                </div><!-- Filter Item -->
 
                                 <!-- Filter Item  size-->
                                 <div class="filter-options-item filter-options-size">

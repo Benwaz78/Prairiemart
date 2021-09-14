@@ -18,17 +18,17 @@ class PostForm(forms.ModelForm):
             attrs={'class':'form-control'}
         )
     ) 
-    category = forms.ModelMultipleChoiceField(
-		queryset=Category.objects.all(), 
-		widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
-		empty_label='Select Category'
-		)
-    content = forms.CharField(
-        label = 'Content',
-        widget = forms.Textarea(
-            attrs = {'class';'form-control'}
-        )
-    )
+    # category = forms.ModelMultipleChoiceField(
+	# 	queryset=Category.objects.all(), 
+	# 	widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
+	# 	empty_label='Select Category'
+	# 	)
+    # content = forms.CharField(
+    #     label = 'Content',
+    #     widget = forms.Textarea(
+    #         attrs = {'class':'form-control'}
+    #     )
+    # )
 
     class Meta():
         model = Post

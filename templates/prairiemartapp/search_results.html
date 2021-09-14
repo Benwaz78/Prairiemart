@@ -17,7 +17,7 @@ Results
                     
             <ol class="breadcrumb no-hide">
                 <li><a href="#">Home    </a></li>
-                <li><a href="#">Electronicsoooooooooooo</a></li>
+                <li><a href="#">Electronics</a></li>
                 <li class="active">Machine Pro</li>
             </ol><!-- Block  Breadcrumb-->
 
@@ -45,9 +45,9 @@ Results
                         <div class="btn-filter-products">
                             <span>Filter</span>
                         </div>
-
-                        <h1 class="cate-title">Electronics</h1>
-
+                        {% for t in q %}
+                        <h1 class="cate-title">{{ t.prod_name }}</h1>
+                        {% endfor %}
                         <div class="modes">
                             <strong  class="label">View as:</strong>
                             <strong  class="modes-mode active mode-grid" title="Grid">
@@ -121,7 +121,7 @@ Results
                     <div class="products  products-grid">
                         <ol class="product-items row">
                             {% if not q %}
-                            noresult
+                           <h3>No results found </h3>
                             {% else %}
                             {% if q %}
                             {% for t in q %}

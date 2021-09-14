@@ -197,10 +197,10 @@ class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView)
 
 
 def category_grid(request):
-    return render(request, 'prairiemartapp/category-grid.html')
+    return render(request, 'prairiemartapp/category_grid.html')
 
 def category_list(request):
-    return render(request, 'prairiemartapp/category-list.html')
+    return render(request, 'prairiemartapp/category_list.html')
 
 class ProductsByCategoryGrid(ListView):
     template_name = 'prairiemartapp/products-by-category-grid.html'
@@ -237,5 +237,29 @@ class BrandListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['product_brand_name'] = self.brand.brand_name
+        return context
+
+class ProductsBySizeView(ListView):
+    template_name = 'prairiemartapp/products-by-size-grid.html'
+    context_object_name = 'product_size'
+
+class SizeListView(ListView):
+    template_name = ''
+
+    def get_queryset(self):
+        self.size = get_object_or_404(Size, size=self.kwargs['size'])
+        return Products.objects.filter(size=self.size)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context ['size'] = self.size
+        return context
+    def get_queryset(self):
+        self.size = get_object_or_404(Size, size=self.kwargs['size'])
+        return Products.objects.filter(size=self.size)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product_size'] = self.size.size
         return context
 

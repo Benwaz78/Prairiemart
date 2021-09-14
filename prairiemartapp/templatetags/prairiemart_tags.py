@@ -15,3 +15,8 @@ def list_brand_on_sidebar():
 	brands = Brand.objects.all()
 	return {'brands':brands}
 
+@register.inclusion_tag('prairiemartapp/prairiemart_tags/size-sidebar-tag.html')
+def list_size_on_sidebar():
+	sizes = Size.objects.all()
+	return {'sizes':sizes}
+

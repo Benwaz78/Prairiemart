@@ -1,0 +1,8 @@
+
+{% if sizes %}
+{% for s in sizes %}
+<label>
+    <a href="{% url 'products:prod_by_size' s.size %}"><span>{{ s.size }} </a> <span class="count">(20)</span>  </span>
+</label>
+{% endfor %}
+{% endif %}

@@ -30,5 +30,6 @@ urlpatterns = [
     path('category-list-page/', views.category_list, name='category_list'),
     path('category/<category>/', views.ProductsByCategoryGrid.as_view(), name='prod_by_category_grid'),
     path('brand/<brand>/', views.ProductsByBrandView.as_view(), name='prod_by_brand'),
+    path('size/<size>/', views.ProductsBySizeView.as_view(), name='prod_by_size'),
 
 ]
