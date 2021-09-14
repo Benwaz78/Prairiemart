@@ -1,11 +1,31 @@
-from cProfile import label
-from unicodedata import category
 from django import forms
 from dashboard.models import *
 from products.models import *
 from django.core import validators
 
 
+class ProductCategoryForm(forms.ModelForm):
+    cat_name = forms.CharField(
+        label='Category Name*',
+        widget=forms.TextInput(attrs={'class':'form-control', 'placeholder':'Category Name'})
+    )
+    cat_img = forms.ImageField(
+        label='Category Image',
+        required=False,
+        widget=forms.ClearableFileInput(attrs={'class':'form-control'}),
+        help_text='Use this Image dimension 170px X 100px'
+        )
+    cat_img_banner = forms.ImageField(
+        label='Category Banner Image',
+        required=False,
+        widget=forms.ClearableFileInput(attrs={'class':'form-control'}),
+        help_text='Use this Image dimension 848px X 132px'
+        )
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+
+    class Meta():
+        model = Category
+        exclude = ('slug','created', 'parent')
 
 class ProductForm(forms.ModelForm):
     prod_name = forms.CharField(label='Product Name*', widget=forms.TextInput(
@@ -67,6 +87,8 @@ class ProductForm(forms.ModelForm):
             }
         )
     )
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+
 
     class Meta():
         model = Products
@@ -85,6 +107,7 @@ class BrandForm(forms.ModelForm):
             attrs={'class':'form-control'}
         )
     )
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
     class Meta():
         model = Brand
@@ -98,8 +121,10 @@ class SizeForm(forms.ModelForm):
             attrs ={'class':'form-control'}
         )
     )
- 
+    botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
 
     class Meta():
         model = Size
         exclude = ('slug','created')
+
+

@@ -25,25 +25,25 @@ Login
 
                 <div class="page-content">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="box-authentication">
-                                <h3>Create an account</h3>
-                                <p>Please enter your email address to create an account.</p>
-                                <label for="emmail_register">Email address</label>
-                                <input type="text" class="form-control" id="emmail_register">
-                                <button class="button"><i class="fa fa-user"></i> Create an account</button>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="box-authentication">
-                                <h3>Already registered?</h3>
-                                <label for="emmail_login">Email address</label>
-                                <input type="text" class="form-control" id="emmail_login">
-                                <label for="password_login">Password</label>
-                                <input type="password" class="form-control" id="password_login">
-                                <p class="forgot-pass"><a href="#">Forgot your password?</a></p>
-                                <button class="button"><i class="fa fa-lock"></i> Sign in</button>
-                            </div>
+                        <div class="col-sm-12">
+                            <form method="POST">
+                                <div class="box-authentication">
+                                    <h3>Already registered?</h3>
+                                    {% if messages %}
+                                        {% for mes in messages %}
+                                            <div class="alert alert-danger">{{ mes }}</div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    <label for="emmail_login">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="emmail_login">
+                                    <label for="password_login">Password</label>
+                                    <input type="password" name="password" class="form-control" id="password_login">
+                                    <p class="forgot-pass"><a href="{% url 'dashboard:password_reset' %}">Forgot your password?</a></p>
+                                    <button type="submit" class="button"><i class="fa fa-lock"></i> Sign in</button>
+                                    <a href="{% url 'dashboard:reg_customer' %}" class="button"><i class="fa fa-user"></i> Register</a>
+                                </div>
+                                {% csrf_token %}
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,70 @@
+{% extends 'prairiemartapp/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+
+{% block title%}
+View Profile
+{% endblock %}
+
+{% block content %}
+		<!-- MAIN -->
+		<main class="site-main">
+            <div class="row">
+                <div class="col-md-12 col-md-push-1   col-main" style="margin-top: 50px;">
+            <h2 class="page-heading">
+                <span class="page-heading-title2">My Account</span>
+            </h2>
+            </div>
+            </div>
+            <div class="block-section-top block-section-top13" style="margin-top:2%" >
+                <div class="container" >
+                    <div class="box-section-top" >
+                       {% include 'prairiemartapp/customer-sidebar.html' %}
+                        <!-- block slide top -->
+                        <div>
+                        <div class="block-slide-main slide-opt-13" style="margin-bottom: 60%;">
+                            {% include 'prairiemartapp/customer-header.html' %}
+                            <div class="product-item-photo text-dark">
+                                <div class="box-authentication">
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <img src="{{ view.get_profile }}" class="img-responsive" alt="{{ view.user_name }}">
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                  <strong>Email: </strong>
+                                                  {{ view.email }}
+                                                </li>
+                                                <li class="list-group-item">
+                                                  <strong>Phone: </strong>
+                                                  {{ view.phone }}
+                                                </li>
+                                                <li class="list-group-item">
+                                                  <strong>Firstname: </strong>
+                                                  {{ view.first_name }}
+                                                </li>
+                                                <li class="list-group-item">
+                                                  <strong>Lastname: </strong>
+                                                  {{ view.last_name }}
+                                                </li>
+                                              </ul> 
+                                              <a href="{% url 'prairiemartapp:edit_form' %}" class="button">Edit Profile</a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>   
+                        </div>
+                        {% include 'prairiemartapp/confirm-logout.html' %}
+                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+		</main><!-- end MAIN -->
+
+		<!-- FOOTER -->
+ {% endblock %}

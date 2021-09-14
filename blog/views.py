@@ -1,7 +1,7 @@
 from django.forms import models
 from django.shortcuts import render
 from blog.models import *
-from blig.forms import *
+from blog.forms import *
 
 from django.urls import reverse_lazy
 from django.utils.text import slugify
@@ -24,7 +24,7 @@ import random
 class PostFormView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     login_url = '/dashboard/'
     model = Post
-    template_name = '/dashboard/post/add-edit-post.html'
+    template_name = 'dashboard/post/add-edit-post.html'
     success_url = reverse_lazy('blog:add_post')
     success_message = 'Post added successfully'
     form_class = PostForm
@@ -40,27 +40,27 @@ class PostFormView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
 class UpdatePost(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
     login_url = '/dashboard/'
     model = Post
-    template_name = '/dashboard/post/add-edit-post.html/'
-    success_url = reverse_lazy('backend:add_meeting')
+    template_name = 'dashboard/post/add-edit-post.html/'
+    success_url = reverse_lazy('blog:edit_post')
     success_message = 'Post edited successfully'
     form_class = PostForm
 
 
 class ListPosts(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
-    model = Posts
+    model = Post
     paginate_by = 4
-    template_name =  'dashboard/posts/list-posts.html'
+    template_name =  'dashboard/post/list-post.html'
     context_object_name = 'list_posts'
 
 class DeletePost(LoginRequiredMixin, DeleteView):
     login_url = '/dashboard/'
-    model = Posts
+    model = Post
     success_url = reverse_lazy('blog:list_posts')
 
 class SinglePost(LoginRequiredMixin, DetailView):
     login_url = '/dashboard/'
-    model = Posts
+    model = Post
     template_name = 'dashboard/posts/single-post.html'
     context_object_name = 'single_post'
 

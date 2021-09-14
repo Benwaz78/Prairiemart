@@ -1,0 +1,8 @@
+
+{% if brands %}
+{% for b in brands %}
+<label>
+    <a href="{% url 'products:prod_by_brand' b.brand_name %}"><span>{{ b.brand_name }} </a> <span class="count">(20)</span>  </span>
+</label>
+{% endfor %}
+{% endif %}

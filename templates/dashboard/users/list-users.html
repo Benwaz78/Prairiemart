@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   List Products
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h3>Users</h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <a href="{% url 'dashboard:add_admin' %}" class="btn btn-primary mb-2">Add User</a>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>SN</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Priviledge</th>
+                        <th>Profile</th>
+                        <th colspan="4">Action</th>
+                    </tr>
+
+                    {% if list_users %}
+                        {% for l in list_users %}
+                            <tr>
+                                <td>{{ forloop.counter0|add:page_obj.start_index }}</td>
+                                <td>{{ l.user_name }}</td>
+                                <td>{{ l.email }}</td>
+                                <td>{{ l.get_priviledge }}</td>
+                                <td>
+                                    <img src="{{ l.get_profile }}" class="img-fluid" alt=" {{ l.user_name }}">
+                                </td>
+                                <td>
+                                    <a href="{% url 'dashboard:single_user' l.id %}" title="View User">
+                                        <i class="icon-eye  text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'dashboard:update_user' l.id %}" title="Update User">
+                                        <i class="icon-note  text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#confirmDel{{ l.id }}"  data-toggle="modal" title="Delete User">
+                                        <i class="icon-trash  text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    {% if l.is_active == False %}
+                                        <a href="{% url 'dashboard:activate_user' l.id %}" class="badge badge-success p-2"  title="Activate User">
+                                            Activate
+                                        </a>
+                                    {% elif l.is_active == True  %}
+                                        <a href="{% url 'dashboard:deactivate_user' l.id %}" class="badge badge-danger p-2"   title="Deactivate User">
+                                            Deactivate
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% include 'dashboard/users/confirm-user-delete.html' %}
+                            
+                        {% endfor %}
+                    {% endif %}
+                </table>
+               {% include 'dashboard/pagination-template.html' %}
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+</script>
+{% endblock %}
