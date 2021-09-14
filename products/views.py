@@ -11,7 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import(
     ListView, DeleteView, 
     DetailView, CreateView,
-    UpdateView, View
+    UpdateView, View, TemplateView
     )
 
 import random
@@ -138,3 +138,43 @@ class SingleSize(LoginRequiredMixin, DetailView):
 
 
 
+class ProductCategoryFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    login_url = '/dashboard/'
+    model = Products
+    paginate_by = 4
+    template_name = 'dashboard/category/add-edit-category.html'
+    success_url = reverse_lazy('products:prod_cat')
+    success_message = 'Category added successfully'
+    form_class = ProductCategoryForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_cat'] = Category.objects.order_by('-created')
+        return context
+
+
+    def form_valid(self, form):
+        randomize = random.randint(0, 999999999999)
+        concate = f'{randomize}-{form.instance.cat_name}'
+        form.instance.slug = slugify(concate)
+        return super().form_valid(form)
+
+
+class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    login_url = '/dashboard/'
+    model = Category
+    success_url = reverse_lazy('backend:edit_cat')
+    success_message = 'Category edited successfully'
+    form_class = ProductCategoryForm
+    template_name = 'dashboard/category/add-edit-category.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_cat'] = Category.objects.order_by('-created')
+        return context
+
+
+class DeleteCategory(LoginRequiredMixin, DeleteView):
+    login_url = '/dashboard/'
+    model = Category
+    success_url = reverse_lazy('products:prod_cat')
