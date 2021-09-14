@@ -1,5 +1,5 @@
 from django.forms import models
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from products.models import *
 from products.forms import *
 
@@ -60,8 +60,7 @@ class SingleProduct(LoginRequiredMixin, DetailView):
     template_name = 'dashboard/products/single-product.html'
     context_object_name = 'single_product'
 
-# Brand views
-
+# Brand views Starts Here
 class BrandFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = '/dashboard/'
     model = Brand
@@ -97,6 +96,9 @@ class SingleBrand(LoginRequiredMixin, DetailView):
     template_name = 'dashboard/brand/single-brand.html'
     context_object_name = 'single_product'
 
+# Brand views ends here
+
+# Size views starts here
 class SizeFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = '/dashboard/'
     model = Size
@@ -132,8 +134,9 @@ class SingleSize(LoginRequiredMixin, DetailView):
     template_name = 'dashboard/size/single-size.html'
     context_object_name = 'single_size'
 
+# Size views ends here
 
-
+# Product Category views starts here
 class ProductCategoryFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = '/dashboard/'
     model = Products
@@ -169,8 +172,55 @@ class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView)
         context['list_cat'] = Category.objects.order_by('-created')
         return context
 
-
 class DeleteCategory(LoginRequiredMixin, DeleteView):
     login_url = '/dashboard/'
     model = Category
     success_url = reverse_lazy('products:prod_cat')
+
+# Product Category views ends here
+
+class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    login_url = '/dashboard/'
+    model = Category
+    success_url = reverse_lazy('backend:edit_cat')
+    success_message = 'Category edited successfully'
+    form_class = ProductCategoryForm
+    template_name = 'dashboard/category/add-edit-category.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_cat'] = Category.objects.order_by('-created')
+        return context
+
+
+def category_grid(request):
+    return render(request, 'prairiemartapp/category-grid.html')
+
+def category_list(request):
+    return render(request, 'prairiemartapp/category-list.html')
+
+class ProductsByCategoryGrid(ListView):
+    template_name = 'prairiemartapp/products-by-category-grid.html'
+    context_object_name = 'product_category'
+
+    def get_queryset(self):
+        self.category = get_object_or_404(Category, cat_name=self.kwargs['category'])
+        return Products.objects.filter(category=self.category)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['category_name'] = self.category.cat_name
+        return context
+
+ 
+class ProductsByBrandView(ListView):
+    template_name = 'prairiemartapp/products-by-brand-grid.html'
+    context_object_name = 'product_brand'
+
+    def get_queryset(self):
+        self.brand = get_object_or_404(Brand, brand_name=self.kwargs['brand'])
+        return Products.objects.filter(brand=self.brand)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['product_brand_name'] = self.brand.brand_name
+        return context

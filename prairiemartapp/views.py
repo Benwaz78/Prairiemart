@@ -72,13 +72,6 @@ def compare(request):
 def wishlist(request):
     return render(request, 'prairiemartapp/wishlist.html')
 
-def category_grid(request):
-    return render(request, 'prairiemartapp/category_grid.html')
-
-def category_list(request):
-    return render(request, 'prairiemartapp/category_list.html')
-
-
 def cutomer_dashboard(request):
     return render(request, 'prairiemartapp/dashboard.html')
 

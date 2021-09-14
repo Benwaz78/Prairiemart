@@ -1,4 +1,5 @@
 {% load static %}
+{% load prairiemart_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,12 +219,173 @@
 
                 </div>
             </div><!-- header-content -->
-
-           {% if request.user.is_authenticated %}
-                {% include 'prairiemartapp/menu-loggedin.html' %}
-           {% else %}
-                {% include 'prairiemartapp/menu.html' %}
-           {% endif %}
+            <div class=" header-nav mid-header">
+                <div class="container">
+                    <div class="box-header-nav">
+            
+                        <span data-action="toggle-nav-cat" class="nav-toggle-menu nav-toggle-cat"><span>Categories</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+            
+                        <span data-action="toggle-nav" class="nav-toggle-menu"><span>Menu</span><i aria-hidden="true" class="fa fa-bars"></i></span>
+                        
+                        <!-- categori -->
+                        <div class="block-nav-categori">
+            
+                            <div class="block-title">
+                                <span>All categories</span>
+                            </div>
+            
+                            <div class="block-content">
+                                <div class="clearfix"><span data-action="close-cat" class="close-cate"><span>Categories</span></span></div>
+                                <ul class="ui-categori">
+                                    <li class="parent">
+                                        <a href="">
+                                            <span class="icon"><img src="{% static 'prairiemartapp/images/icon/index3/nav-cat1.png' %}" alt="nav-cat"></span>
+                                            Electronics
+                                        </a>
+                                        <span class="toggle-submenu"></span>
+                                        <div class="submenu" style="background-image: url(static/prairiemartapp/images/media/index1/bgmenu.jpg);">
+                                            <ul class="categori-list clearfix">
+                                                <li class="col-sm-3">
+                                                    <strong class="title"><a href="">Smartphone</a></strong>
+                                                    <ul>
+                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">Jumpusuits</a></li>
+                                                        <li><a href="">Scarvest</a></li>
+                                                        <li><a href="">T-Shirts</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-sm-3">
+                                                    <strong class="title"><a href="">TElevision</a></strong>
+                                                    <ul>
+                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">Jumpusuits</a></li>
+                                                        <li><a href="">Scarvest</a></li>
+                                                        <li><a href="">T-Shirts</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-sm-3">
+                                                    <strong class="title"><a href="">Camera</a></strong>
+                                                    <ul>
+                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">Jumpusuits</a></li>
+                                                        <li><a href="">Scarvest</a></li>
+                                                        <li><a href="">T-Shirts</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <ul class="categori-list clearfix">
+                                                <li class="col-sm-3">
+                                                    <strong class="title"><a href="">Smartphone</a></strong>
+                                                    <ul>
+                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">Jumpusuits</a></li>
+                                                        <li><a href="">Scarvest</a></li>
+                                                        <li><a href="">T-Shirts</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-sm-3">
+                                                    <strong class="title"><a href="">TElevision</a></strong>
+                                                    <ul>
+                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">Jumpusuits</a></li>
+                                                        <li><a href="">Scarvest</a></li>
+                                                        <li><a href="">T-Shirts</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="col-sm-3">
+                                                    <strong class="title"><a href="">Camera</a></strong>
+                                                    <ul>
+                                                        <li><a href="">Skirts    </a></li>
+                                                        <li><a href="">Jackets</a></li>
+                                                        <li><a href="">Jumpusuits</a></li>
+                                                        <li><a href="">Scarvest</a></li>
+                                                        <li><a href="">T-Shirts</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                 
+                                    
+                                   
+                                    
+                                   
+                                    
+                                </ul>
+                               
+                            </div>
+                            
+                        </div><!-- categori -->
+            
+                        <!-- menu -->
+                        <div class="block-nav-menu">
+                            <div class="clearfix"><span data-action="close-nav" class="close-nav"><span>close</span></span></div>
+                            <ul class="ui-menu">
+                                <li class="parent parent-megamenu active">
+                                    <a href="{% url 'index' %}">Home</a>
+                                    <span class="toggle-submenu"></span>
+                                    <div class="megamenu drop-menu">
+                                        <ul>
+                                           
+                                            <li class="col-md-3">
+                                                <strong class="title"><a href=""><span>Page </span></a></strong>
+                                                <ul class="list-submenu">
+                                                    <li><a href="{% url 'dashboard:login_view' %}">Login</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:about' %}">About</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:contact' %}">Contact</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:blog' %}">Blog</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:blogpost' %}">Blog Post</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:checkout' %}">Checkout</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:order' %}">Order</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="col-md-3">
+                                                <strong class="title"><a href=""><span>Page </span></a></strong>
+                                                <ul class="list-submenu">
+                                                    <li><a href="{% url 'products:category_grid' %}">Category 1</a></li>
+                                                    <li><a href="{% url 'products:category_list' %}">Category 2</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:product' %}">Product 1</a></li>
+                                                    <li><a href="Product2.html">Product 2</a></li>
+                                                    <li><a href="Product3.html">Product 3</a></li>
+                                                    <li><a href="{% url 'prairiemartapp:wishlist' %}">WishList </a></li>
+                                                    <li><a href="{% url 'prairiemartapp:compare' %}">Compare</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                {% display_menu %}
+                                {% if request.user.is_authenticated %}
+                                    <li class="parent parent-submenu">
+                                        <a href="{% url 'prairiemartapp:cutomer_dashboard' %}"> Account  </a>
+                                        <span class="toggle-submenu"></span>
+                                        <div class="submenu drop-menu" style="right: auto; left: 0px;">
+                                            <ul>
+                                                <li><a href="#customerLogout" data-toggle="modal">Logout</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                {% else %}
+                                <li class="parent">
+                                    <a href="#"> Blog  </a>
+                                    
+                                </li>
+                                {% endif %}
+                                
+                                
+                            </ul>
+            
+                        </div><!-- menu -->
+                        
+                    </div>
+                </div>
+            </div>
+           
 
         </header><!-- end HEADER -->        
 

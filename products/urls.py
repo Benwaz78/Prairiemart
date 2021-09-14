@@ -22,4 +22,11 @@ urlpatterns = [
     path('product-category/', views.ProductCategoryFormView.as_view(), name='prod_cat'),
     path('edit-product-category/<int:pk>/', views.UpdateProductCategory.as_view(), name='edit_cat'),
     path('del-product-category/<int:pk>/', views.DeleteCategory.as_view(), name='del_cat'),
+
+
+    path('category-grid-page/', views.category_grid, name='category_grid'),
+    path('category-list-page/', views.category_list, name='category_list'),
+    path('category/<category>/', views.ProductsByCategoryGrid.as_view(), name='prod_by_category_grid'),
+    path('brand/<brand>/', views.ProductsByBrandView.as_view(), name='prod_by_brand'),
+
 ]
