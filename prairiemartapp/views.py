@@ -76,6 +76,7 @@ def compare(request):
 def wishlist(request):
     return render(request, 'prairiemartapp/wishlist.html')
 
+<<<<<<< HEAD
 def category_grid(request):
     products = Products.objects.filter()
     brand = Brand.objects.order_by('created')
@@ -99,6 +100,8 @@ def category_list(request):
     return render(request, 'prairiemartapp/category_list.html')
 
 
+=======
+>>>>>>> b87cceea074d68cbc5060a26cf9efe51e93a7c94
 def cutomer_dashboard(request):
     return render(request, 'prairiemartapp/dashboard.html')
 
