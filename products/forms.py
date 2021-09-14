@@ -96,7 +96,6 @@ class ProductForm(forms.ModelForm):
 
 
 
-<<<<<<< HEAD
 class FilterForm(forms.ModelForm):
     prod_name = forms.CharField(label='Product Name*', widget=forms.TextInput(
         attrs={'class':'form-control', 'placeholder':'Product Name'}
@@ -113,7 +112,7 @@ class FilterForm(forms.ModelForm):
         fields = ['prod_name', 'category']
         model = Products
     
-=======
+
 class BrandForm(forms.ModelForm):
     brand_name = forms.CharField(
         label='Brand Name',
@@ -146,4 +145,3 @@ class SizeForm(forms.ModelForm):
         exclude = ('slug','created')
 
 
->>>>>>> b87cceea074d68cbc5060a26cf9efe51e93a7c94

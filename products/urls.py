@@ -10,10 +10,7 @@ urlpatterns = [
     path('edit-product/<int:pk>/', views.UpdateProduct.as_view(), name='edit_product'),
     path('delete-product/<int:pk>/', views.DeleteProduct.as_view(), name='delete_product'),
     path('single-product/<int:pk>/', views.SingleProduct.as_view(), name='single_product'),
-<<<<<<< HEAD
     path('brand/<brands>/', BrandListView.as_view(), name='brands'),
-    
-=======
     path('add-brand', views.BrandFormView.as_view(), name='add_brand'),
     path('list-brands/', views.ListBrands.as_view(), name='list_brands'),
     path('edit-brand/<int:pk>/', views.UpdateBrand.as_view(), name='edit_brand'),
@@ -34,5 +31,4 @@ urlpatterns = [
     path('category/<category>/', views.ProductsByCategoryGrid.as_view(), name='prod_by_category_grid'),
     path('brand/<brand>/', views.ProductsByBrandView.as_view(), name='prod_by_brand'),
 
->>>>>>> b87cceea074d68cbc5060a26cf9efe51e93a7c94
 ]

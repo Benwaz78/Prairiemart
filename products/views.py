@@ -1,11 +1,8 @@
 from basket.context_processors import *
 from unicodedata import name
 from django.forms import models
-<<<<<<< HEAD
 from django.shortcuts import get_object_or_404, render
-=======
 from django.shortcuts import render, get_object_or_404
->>>>>>> b87cceea074d68cbc5060a26cf9efe51e93a7c94
 from products.models import *
 from products.forms import *
 
@@ -222,7 +219,6 @@ class ProductsByBrandView(ListView):
     template_name = 'prairiemartapp/products-by-brand-grid.html'
     context_object_name = 'product_brand'
 
-<<<<<<< HEAD
 class BrandListView(ListView):
     template_name = 'priariemartapp/brand-category.html'
 
@@ -234,7 +230,6 @@ class BrandListView(ListView):
         context = super().get_context_data(**kwargs)
         context ['brand'] = self.brand
         return context
-=======
     def get_queryset(self):
         self.brand = get_object_or_404(Brand, brand_name=self.kwargs['brand'])
         return Products.objects.filter(brand=self.brand)
@@ -243,4 +238,4 @@ class BrandListView(ListView):
         context = super().get_context_data(**kwargs)
         context['product_brand_name'] = self.brand.brand_name
         return context
->>>>>>> b87cceea074d68cbc5060a26cf9efe51e93a7c94
+

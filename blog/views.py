@@ -1,7 +1,7 @@
 from django.forms import models
 from django.shortcuts import render
 from blog.models import *
-from blig.forms import *
+from blog.forms import *
 
 from django.urls import reverse_lazy
 from django.utils.text import slugify
@@ -18,7 +18,7 @@ import random
 
 
 # Create your views here.
-<<<<<<< HEAD
+
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from blog.models import *
@@ -52,8 +52,6 @@ def blog(request):
 def blog_details(request):
     return render(request, 'prairiemartapp/blog_post.html')
  
-=======
-
 
 # post views
 class PostFormView(LoginRequiredMixin,SuccessMessageMixin,CreateView):
@@ -83,20 +81,20 @@ class UpdatePost(LoginRequiredMixin,SuccessMessageMixin,UpdateView):
 
 class ListPosts(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
-    model = Posts
+    model = Post
     paginate_by = 4
     template_name =  'dashboard/posts/list-posts.html'
     context_object_name = 'list_posts'
 
 class DeletePost(LoginRequiredMixin, DeleteView):
     login_url = '/dashboard/'
-    model = Posts
+    model = Post
     success_url = reverse_lazy('blog:list_posts')
 
 class SinglePost(LoginRequiredMixin, DetailView):
     login_url = '/dashboard/'
-    model = Posts
+    model = Post
     template_name = 'dashboard/posts/single-post.html'
     context_object_name = 'single_post'
 
->>>>>>> b87cceea074d68cbc5060a26cf9efe51e93a7c94
+
