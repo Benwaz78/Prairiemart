@@ -267,7 +267,7 @@ class VendorFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     template_name = 'dashboard/vendor-products/add-edit-product.html'
     success_url = reverse_lazy('products:vendor_add_product')
     success_message = 'Product added successfully'
-    form_class = ProductForm
+    form_class = VendorProductForm
   
     def form_valid(self, form):
         randomize = random.randint(0, 999999999999)
