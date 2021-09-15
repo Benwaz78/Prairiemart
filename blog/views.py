@@ -49,9 +49,37 @@ def blog(request):
     
     return render(request, 'prairiemartapp/blog.html', context)
 
-def blog_details(request):
-    return render(request, 'prairiemartapp/blog_post.html')
+# class BlogSinglePost(DetailView):
+#     model = Post
+#     form_class = CommentForm
+#     template_name = 'prairiemartapp/blog_post.html'
+#     context_object_name = 'blog_single_post'
  
+def blog_post(request, pk):
+    most_recent = Post.objects.order_by('created')[:6]
+    most_recent_comment = Comment.objects.filter(post=pk).order_by('-created_on')[:4]
+    single_post = get_object_or_404(Post,  pk=pk)
+    comments = Comment.objects.filter(post=pk).order_by('-created_on')
+ 
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False) 
+            comment.post = single_post
+            comment.save()
+            return redirect('prairiemartapp:blog_single_post', pk=single_post.pk)
+
+    else:
+        form = CommentForm()     
+    context ={
+        'comm':comments, 
+        'form':form,
+        'single':single_post, 
+        'most_recent':most_recent,
+        'sipst':single_post,
+        'most_recent_comment':most_recent_comment,
+    }
+    return render(request, 'prairiemartapp/blog_post.html', context)
 
 # post views
 class PostFormView(LoginRequiredMixin,SuccessMessageMixin,CreateView):

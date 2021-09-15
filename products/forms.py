@@ -92,7 +92,8 @@ class ProductForm(forms.ModelForm):
 
     class Meta():
         model = Products
-        exclude = ('created_by', 'created', 'updated', 'slug', 'objects', 'products')
+        
+        exclude = ('created_by', 'created', 'updated', 'slug', 'objects', 'products',)
 
 
 

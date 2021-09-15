@@ -42,3 +42,23 @@ class Post(models.Model):
         return reverse('blog:blog_detail', kwargs={
             'slug': self.slug,
         })
+
+
+
+class Comment(models.Model):
+    name = models.CharField(max_length=80,verbose_name= 'Name')
+    email = models.EmailField()
+    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    class Meta():
+        verbose_name_plural = 'Comments'
+
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)

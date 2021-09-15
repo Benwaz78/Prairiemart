@@ -39,9 +39,14 @@
                             {{ request.user.get_priviledge }}
                           </li>
                        </ul>
+                    {% if request.user.is_staff == True %}
                        <a href="{% url 'dashboard:edit_form' %}" class="btn btn-primary mt-2">Edit Profile</a>
                        <a href="{% url 'dashboard:add_admin' %}" class="btn btn-primary mt-2">Add User</a>
                        <a href="{% url 'dashboard:list_users' %}" class="btn btn-primary mt-2">List Users</a>
+                   {% elif request.user.is_vendor == True  %}
+                   <a href="{% url 'dashboard:edit_vendor_profile_form' %}" class="btn btn-primary mt-2">Edit Profile</a>
+                   {% endif %}
+                       
                     </div>
                 </div>
             </div>

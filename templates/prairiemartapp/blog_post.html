@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 {% block title%}
-Blog Details
+{{single.pst_title}}
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@ Blog Details
                 <ol class="breadcrumb no-hide">
                     <li><a href="#">Home    </a></li>
                     <li><a href="#">Blog    </a></li>
-                    <li class="active">Ut pharetra augue nec augue integer rutrum ante eu lacus</li>
+                    <li class="active">{{ single.pst_title}}</li>
                 </ol><!-- Block  Breadcrumb-->
 
                 <div class="row">
@@ -24,22 +24,24 @@ Blog Details
                     <!-- Main Content -->
                     <div class="col-md-9 col-md-push-3  col-main ">
                         <h1 class="page-heading">
-                            <span class="page-heading-title2">Sed ut perspiciatis unde omnis iste natus error</span>
+                            <span class="page-heading-title2">{{single.pst_title}}</span>
                         </h1>
+                        {% if single %}
+                      
                         <article class="entry-detail">
                             <div class="entry-meta-data">
                                 <span class="author">
                                 <i class="fa fa-user"></i> 
-                                by: <a href="#">Admin</a></span>
-                                <span class="cat">
+                                by: <a href="#">{{ single.user }}</a></span>
+                                <!-- <span class="cat">
                                     <i class="fa fa-folder-o"></i>
                                     <a href="#">News, </a>
                                     <a href="#">Promotions</a>
-                                </span>
+                                </span> -->
                                 <span class="comment-count">
-                                    <i class="fa fa-comment-o"></i> 3
+                                    <i class="fa fa-comment-o"></i> {{ comm.count }}
                                 </span>
-                                <span class="date"><i class="fa fa-calendar"></i> 2014-08-05 07:01:49</span>
+                                <span class="date"><i class="fa fa-calendar"></i> {{ single.created}}</span>
                                 <span class="post-star">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -50,27 +52,15 @@ Blog Details
                                 </span>
                             </div>
                             <div class="entry-photo">
-                                <img src="{% static 'prairiemartapp/images/media/detail/blog-full.jpg' %}" alt="Blog">
+                                <img src="{{ single.img_url}}" alt="Blog">
                             </div>
                             <div class="content-text clearfix">
-                                <p>Ut tellus dolor, dapibus eget, elementum vel, cursus eleifend, elit. Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Donec sit amet eros. Lorem ipsum dolor sit amet, consecvtetuer adipiscing elit. Mauris fermentum dictum magna. Sed laoreet aliquam leo. Ut tellus dolor, dapibus eget, elementum vel.</p>
-
-                                <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
-
-                                <p>Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, <a href="#">malesuada at</a>, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue. </p>
-
-                                <p>Nam elit agna,endrerit sit amet, tincidunt ac, viverra sed, nulla. Donec porta diam eu massa. Quisque diam lorem, interdum vitae,dapibus ac, scelerisque vitae, pede. Donec eget tellus non erat lacinia fermentum. Donec in velit vel ipsum auctor pulvinar. Vestibulum iaculis lacinia est. Proin dictum elementum velit. Fusce euismod consequat ante. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque sed dolor. Aliquam congue fermentum nisl. </p>
-                                <p>Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros.</p>
-
-                                <p>Integer rutrum ante eu lacus.Vestibulum libero nisl, porta vel, scelerisque eget, <a href="#">malesuada at</a>, neque. Vivamus eget nibh. Etiam cursus leo vel metus. Nulla facilisi. Aenean nec eros. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse sollicitudin velit sed leo. Ut pharetra augue nec augue. </p>
+                                <p>{{ single.content}}</p>
                             </div>
-                            <div class="entry-tags">
-                                <span>Tags:</span>
-                                <a href="#">beauty,</a>
-                                <a href="#">medicine,</a>
-                                <a href="#">health</a>
-                            </div>
+                          
                         </article>
+                       
+                        {% endif %}
                         <!-- Related Posts -->
                         <div class="single-box">
                             <h2>Related Posts</h2>
@@ -170,113 +160,64 @@ Blog Details
                             </ul>
                         </div>
                         <!-- ./Related Posts -->
-                        <!-- Comment -->
                         <div class="single-box">
-                            <h2 class="">Comments</h2>
+                            <h2 class="" style="font-size: 40px; font-weight: 700;">Comments</h2>
+                            {% if not comm %}
+                            <h4>No Comments yet....<a href="#add_comment"> Be the first to add</a></h4>
+                            {% else %}
+                            {% for comment in comm %}
                             <div class="comment-list">
                                 <ul>
                                     <li>
                                         <div class="avartar">
-                                            <img src="{% static 'prairiemartapp/images/media/detail/avatar.jpg' %}" alt="Avatar">
+                                            <img src="{% static 'frontend/images/media/detail/avatar.jpg' %}" alt="Avatar">
                                         </div>
                                         <div class="comment-body">
                                             <div class="comment-meta">
-                                                <span class="author"><a href="#">Admin</a></span>
-                                                <span class="date">2015-04-01</span>
+                                                <span class="author"><a href="#">{{ comment.name }}</a></span>
+                                                <span class="date"> {{ comment.created_on }}</span>
                                             </div>
                                             <div class="comment">
-                                                Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. 
+                                                {{ comment.body | linebreaks}}
                                             </div>
                                         </div>
                                     </li>
-                                    <li>
-                                        <ul>
-                                            <li>
-                                                <div class="avartar">
-                                                    <img src="{% static 'prairiemartapp/images/media/detail/avatar.jpg' %}" alt="Avatar">
-                                                </div>
-                                                <div class="comment-body">
-                                                    <div class="comment-meta">
-                                                        <span class="author"><a href="#">Admin</a></span>
-                                                        <span class="date">2015-04-01</span>
-                                                    </div>
-                                                    <div class="comment">
-                                                        Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. 
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="avartar">
-                                                    <img src="{% static 'prairiemartapp/images/media/detail/avatar.jpg' %}" alt="Avatar">
-                                                </div>
-                                                <div class="comment-body">
-                                                    <div class="comment-meta">
-                                                        <span class="author"><a href="#">Admin</a></span>
-                                                        <span class="date">2015-04-01</span>
-                                                    </div>
-                                                    <div class="comment">
-                                                        Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. 
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <div class="avartar">
-                                            <img src="{% static 'prairiemartapp/images/media/detail/avatar.jpg' %}" alt="Avatar">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="comment-meta">
-                                                <span class="author"><a href="#">Admin</a></span>
-                                                <span class="date">2015-04-01</span>
-                                            </div>
-                                            <div class="comment">
-                                                Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. 
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="avartar">
-                                            <img src="{% static 'prairiemartapp/images/media/detail/avatar.jpg' %}" alt="Avatar">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="comment-meta">
-                                                <span class="author"><a href="#">Admin</a></span>
-                                                <span class="date">2015-04-01</span>
-                                            </div>
-                                            <div class="comment">
-                                                Aenean auctor wisi et urna. Aliquam erat volutpat. Duis ac turpis. Integer rutrum ante eu lacus. Vestibulum libero nisl, porta vel, scelerisque eget, malesuada at, neque. 
-                                            </div>
-                                        </div>
-                                    </li>
+                                    
                                 </ul>
                             </div>
+                            {% endfor %}
+                            {% endif %}
                         </div>
-                        <div class="single-box">
+                        <br><br><br>
+                        {% if sipst %}
+                        <div class="single-box" id="add_comment">
+                            
                             <h2>Leave a Comment</h2>
-                            <div class="coment-form">
-                                <p>Make sure you enter the () required information where indicated. HTML code is not allowed.</p>
+                            <form method="POST" action="" class="coment-form">
+                               
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="name">Name</label>
-                                        <input id="name" type="text" class="form-control">
+                                       {{form.name}}
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="email">Email</label>
-                                        <input id="email" type="text" class="form-control">
+                                        {{form.email}}
                                     </div>
-                                    <div class="col-sm-12">
-                                        <label for="website">Website URL</label>
+                                    <!-- <div class="col-sm-12">
+                                        <label for="website"></label>
                                         <input id="website" type="text" class="form-control">
-                                    </div>
+                                    </div> -->
                                     <div class="col-sm-12">
                                         <label for="message">Message</label>
-                                        <textarea name="message" id="message"rows="8" class="form-control"></textarea>
+                                        {{form.body}}
                                     </div>
                                 </div>
-                                <button class="btn-comment">Submit</button>
-                            </div>
+                                <button type="submit" class="btn-comment">Submit</button>
+                                {% csrf_token %}
+                            </form>
                         </div>
+                        {% endif %}
                         <!-- ./Comment -->
                     </div><!-- Main Content -->
                     
@@ -420,27 +361,21 @@ Blog Details
                             </div>
                             <div class="block-content">
                                 <ul class="recent-comment-list">
+                                    {% if not comm %}
+                                    <h6>No Recent Comments yet....</h6>
+                                    {% else %}
+                                    {% for comment in comm %}
+                                    {% for d in most_recent_comment %}
                                     <li>
-                                        <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
+                                        <h5><a href="#"></a></h5>
                                         <div class="comment">
-                                            "Consectetuer adipis. Mauris accumsan nulla vel diam. Sed in..."
+                                            "{{ d.body }}"
                                         </div>
-                                        <div class="author">Posted by <a href="#">Admin</a></div>
+                                        <div class="author">Posted by <a href="#">{{ d.name }}</a></div>
                                     </li>
-                                    <li>
-                                        <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
-                                        <div class="comment">
-                                            "Consectetuer adipis. Mauris accumsan nulla vel diam. Sed in..."
-                                        </div>
-                                        <div class="author">Posted by <a href="#">Admin</a></div>
-                                    </li>
-                                    <li>
-                                        <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
-                                        <div class="comment">
-                                            "Consectetuer adipis. Mauris accumsan nulla vel diam. Sed in..."
-                                        </div>
-                                        <div class="author">Posted by <a href="#">Admin</a></div>
-                                    </li>
+                                  {% endfor %}
+                                  {% endfor %}
+                                  {% endif %}
                                 </ul>
                             </div>
                         </div><!-- Block  RecentComments-->

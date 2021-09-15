@@ -33,3 +33,16 @@ class PostForm(forms.ModelForm):
     class Meta():
         model = Post
         exclude = ('created','time','user','slug',)
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Name'}),
+            'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder':'Enter Email'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),
+            
+        }

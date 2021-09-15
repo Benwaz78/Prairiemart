@@ -92,7 +92,7 @@ Blog
                                                     {{ e.content|safe|truncatewords:100| slice:":400"  }}
                                                 </div>
                                                 <div class="entry-more">
-                                                    <a href="#">Read more</a>
+                                                    <a href="{% url 'blog:blog_single_post' e.id %}">Read more</a>
                                                 </div>
                                             </div>
                                         </div>

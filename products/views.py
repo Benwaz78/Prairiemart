@@ -1,3 +1,4 @@
+from django.http import request
 from basket.context_processors import *
 from unicodedata import name
 from django.forms import models
@@ -36,6 +37,7 @@ class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         concate = f'{randomize}-{form.instance.prod_name}'
         form.instance.slug = slugify(concate)
         return super().form_valid(form)
+
 
 class UpdateProduct(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
@@ -230,14 +232,7 @@ class BrandListView(ListView):
         context = super().get_context_data(**kwargs)
         context ['brand'] = self.brand
         return context
-    def get_queryset(self):
-        self.brand = get_object_or_404(Brand, brand_name=self.kwargs['brand'])
-        return Products.objects.filter(brand=self.brand)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['product_brand_name'] = self.brand.brand_name
-        return context
+   
 
 class ProductsBySizeView(ListView):
     template_name = 'prairiemartapp/products-by-size-grid.html'
@@ -263,3 +258,51 @@ class SizeListView(ListView):
         context['product_size'] = self.size.size
         return context
 
+
+######## Vendor starts here ########## 
+
+class VendorFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    login_url = '/dashboard/'
+    model = Products
+    template_name = 'dashboard/vendor-products/add-edit-product.html'
+    success_url = reverse_lazy('products:vendor_add_product')
+    success_message = 'Product added successfully'
+    form_class = ProductForm
+  
+    def form_valid(self, form):
+        randomize = random.randint(0, 999999999999)
+        concate = f'{randomize}-{form.instance.prod_name}'
+        form.instance.slug = slugify(concate)
+        form.instance.in_stock = False
+        form.instance.is_active = False
+        form.instance.created_by = request.user
+        return super().form_valid(form)
+
+
+class VendorUpdateProduct(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    login_url = '/dashboard/'
+    model = Products
+    success_url = reverse_lazy('backend:add_meeting')
+    success_message = 'Product edited successfully'
+    form_class = ProductForm
+    template_name = 'dashboard/vendor-products/add-edit-product.html'
+
+
+class VendorListProducts(LoginRequiredMixin, ListView):
+    login_url = '/dashboard/'
+    model = Products
+    paginate_by = 4
+    template_name =  'dashboard/vendor-products/list-products.html'
+    context_object_name = 'vendor_list_products'
+
+
+class VendorDeleteProduct(LoginRequiredMixin, DeleteView):
+    login_url = '/dashboard/'
+    model = Products
+    success_url = reverse_lazy('products:vendor_list_products')
+
+class VendorSingleProduct(LoginRequiredMixin, DetailView):
+    login_url = '/dashboard/'
+    model = Products
+    template_name = 'dashboard/products/vendor-single-product.html'
+    context_object_name = 'vendor_single_product'

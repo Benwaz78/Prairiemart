@@ -1,0 +1,68 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   List Products
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h3>Products</h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <a href="{% url 'products:vendor_add_product' %}" class="btn btn-primary mb-2">Add Product</a>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>SN</th>
+                        <th>Product Name</th>
+                        <th>Prize</th>
+                        <th>Category</th>
+                        <th>User</th>
+                        <th>Image</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+
+                    {% if vendor_list_products %}
+                        {% for v in vendor_list_products %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ v.prod_name }}</td>
+                                <td>{{ v.price }}</td>
+                                <td>{{ v.category }}</td>
+                                <td>{{ v.created_by.user_name }}</td>
+                                <td>
+                                    <img src="{{ v.show_image1 }}" alt=" {{ v.prod_name }}">
+                                </td>
+                                <td>
+                                    <a href="{% url 'products:vendor_edit_product' v.id %}" title="Edit Product">
+                                        <i class="icon-note text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'products:vendor_single_product' v.id %}" title="View Product">
+                                        <i class="icon-eye  text-primary"></i>
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="#confirmDel{{ v.id }}"  data-toggle="modal" title="Delete Product">
+                                        <i class="icon-trash  text-primary"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            {% include 'dashboard/vendor-products/confirm-product-delete.html' %}
+                            
+                        {% endfor %}
+                    {% endif %}
+                </table>
+               {% include 'dashboard/pagination-template.html' %}
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+</script>
+{% endblock %}
