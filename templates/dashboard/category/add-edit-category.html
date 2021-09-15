@@ -1,0 +1,85 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   {% if not form.instance.pk %}
+        Add Category
+    {% else %}
+        Edit Category
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    {% if not form.instance.pk %}
+        <h3>Add Category</h3>
+        {% else %}
+        <h3>Edit Category</h3>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <form class="forms-sample" method="POST" enctype="multipart/form-data">
+
+                            {% include 'dashboard/form-snippet.html' with form=form %}
+                            {% if not form.instance.pk %}
+                                <button type="submit" class="btn btn-primary mr-2">Add Category</button>
+                            {% else %}
+                                <button type="submit" class="btn btn-primary mr-2">Edit Category</button>
+                            {% endif %}
+                            
+                            
+                        </form>
+                    </div>
+                    <div class="col-sm-8">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>SN</th>
+                                <th>Category Name</th>
+                                <th>Category Image</th>
+                                <th>Category Image Banner</th>
+                                <th colspan="3">Action</th>
+                            </tr>
+        
+                            {% if list_cat %}
+                                {% for l in list_cat %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td>{{ l.cat_name }}</td>
+                                        <td>
+                                            <img src="{{ l.show_cat_img }}" alt="" class="img-fluid">
+                                        </td>
+                                        <td>
+                                            <img src="{{ l.show_cat_img_banner }}" alt="" class="img-fluid">
+                                        </td>
+
+                                        <td>
+                                            <a href="{% url 'products:edit_cat' l.id %}"  title="Edit Product">
+                                                <i class="icon-note  text-primary"></i>
+                                            </a>
+                                        </td>
+                                    
+                                        <td>
+                                            <a href="#confirmDel{{ l.id }}"  data-toggle="modal" title="Delete Product">
+                                                <i class="icon-trash  text-primary"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% include 'dashboard/category/confirm-category-delete.html' %}
+                                    
+                                {% endfor %}
+                            {% endif %}
+                        </table>
+                       {% include 'dashboard/pagination-template.html' %}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}

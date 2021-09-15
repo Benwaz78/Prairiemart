@@ -1,0 +1,57 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+{{ single_size.size }}
+{% endblock %}
+   
+
+
+{% block content %}
+<div class="page-header">
+        <h3>{{ single_size.size }}</h3>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <img src="{{ single_size.show_image1 }}" class="img-fluid" alt="{{single_size.prod_name}}">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <table class="table table-bordred">
+                            <tr>
+                                <th>Fields</th>
+                                <th>Data</th>
+                            </tr>
+                            {% if single_size %}
+                                <tr>
+                                    <td>Size </td>
+                                    <td>{{ single_size.size }}</td>
+                                </tr>
+                                
+                           {% endif %}
+                            
+                        </table>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-sm-12">
+                        <a href="{% url 'products:add_size' %}" class="btn btn-primary">Add Size</a>
+                        {% if single_size %}
+                        <a href="{% url 'products:edit_size' single_size.id %}" class="btn btn-primary">Edit Size</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}

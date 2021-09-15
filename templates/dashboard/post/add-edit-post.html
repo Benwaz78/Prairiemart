@@ -1,0 +1,40 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block title %}
+   {% if not form.instance.pk %}
+        Add Post
+    {% else %}
+        Edit Post
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    {% if not form.instance.pk %}
+        <h3>Add Post</h3>
+        {% else %}
+        <h3>Edit Post</h3>
+    {% endif %}
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form class="forms-sample" method="POST" enctype="multipart/form-data">
+
+                    {% include 'dashboard/form-snippet.html' with form=form %}
+                    {% if not form.instance.pk %}
+                        <button type="submit" class="btn btn-primary mr-2">Add Post</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-primary mr-2">Edit Post</button>
+                    {% endif %}
+                    
+                    
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+{% endblock %}
