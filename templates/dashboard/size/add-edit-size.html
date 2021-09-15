@@ -20,21 +20,64 @@
     <div class="col-sm-12">
         <div class="card">
             <div class="card-body">
+                <div class="row">
+                <div class="col-sm-4">
+                    <form class="forms-sample" method="POST" enctype="multipart/form-data">
 
-                <form class="forms-sample" method="POST" enctype="multipart/form-data">
-
-                    {% include 'dashboard/form-snippet.html' with form=form %}
-                    {% if not form.instance.pk %}
-                        <button type="submit" class="btn btn-primary mr-2">Add Size</button>
-                    {% else %}
-                        <button type="submit" class="btn btn-primary mr-2">Edit Size</button>
-                    {% endif %}
-                    
-                    
-                </form>
+                        {% include 'dashboard/form-snippet.html' with form=form %}
+                        {% if not form.instance.pk %}
+                            <button type="submit" class="btn btn-primary mr-2">Add Size</button>
+                        {% else %}
+                            <button type="submit" class="btn btn-primary mr-2">Edit Size</button>
+                        {% endif %}
+                        
+                        
+                    </form>
             </div>
-        </div>
        
+             <div class="col-sm-8">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>SN</th>
+                            <th>Size</th>
+                            <th colspan="3">Action</th>
+                        </tr>
+    
+                        {% if list_sizes %}
+                            {% for p in list_sizes %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ p.size }}</td>
+                                    <td>
+                                        <a href="{% url 'products:single_size' p.id %}" title="View Size">
+                                            <i class="icon-eye  text-primary"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'products:edit_size' p.id %}" title="Edit Size">
+                                            <i class="icon-note text-primary"></i>
+                                        </a>
+                                    </td>
+                                    
+                                    <td>
+                                        <a href="#confirmDel{{ p.id }}"  data-toggle="modal" title="Delete Size">
+                                            <i class="icon-trash  text-primary"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% include 'dashboard/size/confirm-size-delete.html' %}
+                                
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                   {% include 'dashboard/pagination-template.html' %}
+            
+           
+                </div>
+       
+        </div>
     </div>
+    
+    
 </div>
 {% endblock %}

@@ -34,12 +34,12 @@
                                     <img src="{{ l.get_profile }}" class="img-fluid" alt=" {{ l.user_name }}">
                                 </td>
                                 <td>
-                                    <a href="{% url 'dashboard:single_user' l.id %}" title="View User">
+                                    <a href="{% url 'dashboard:view_profile' %}" title="View User">
                                         <i class="icon-eye  text-primary"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{% url 'dashboard:update_user' l.id %}" title="Update User">
+                                    <a href="{% url 'dashboard:edit_form'  %}" title="Update User">
                                         <i class="icon-note  text-primary"></i>
                                     </a>
                                 </td>

@@ -89,12 +89,13 @@ class PostCategoryFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class UpdatePostCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
     model = Category
-    success_url = reverse_lazy('backend:edit_cat')
+    success_url = reverse_lazy('blog:edit_cat')
     success_message = 'Category edited successfully'
     form_class = PostCategoryForm
     template_name = 'dashboard/category-post/add-edit-category-post.html'
-
     
+    def get_success_url(self):
+        return reverse('blog:edit_cat', kwargs={'pk' : self.object.pk})
 
 class DeleteCategory(LoginRequiredMixin, DeleteView):
     login_url = '/dashboard/'

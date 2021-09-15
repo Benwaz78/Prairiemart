@@ -37,30 +37,7 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#brands" aria-expanded="false" aria-controls="brands">
-            <span class="menu-title">Brands</span>
-            <i class="icon-layers menu-icon"></i>
-          </a>
-          <div class="collapse" id="brands">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_brand' %}">Add Brand</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% url 'products:list_brands' %}">View Brands</a></li>
-            </ul>
-          </div>
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" data-toggle="collapse" href="#size" aria-expanded="false" aria-controls="size">
-            <span class="menu-title">Size</span>
-            <i class="icon-layers menu-icon"></i>
-          </a>
-          <div class="collapse" id="size">
-            <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_size' %}">Add Size</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{% url 'products:list_sizes' %}">View Sizes</a></li>
-            </ul>
-          </div>
-      </li>
+      
       <li class="nav-item">
           <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="products">
             <span class="menu-title">Products</span>
@@ -70,14 +47,8 @@
             <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_product' %}">Add Product</a></li>
               <li class="nav-item"> <a class="nav-link" href="{% url 'products:list_products' %}">View Products</a></li>
-              <div class="row">
-                  <div class="col-lg-5">
-                    <a class="nav-link" href="{% url 'products:add_brand' %}">Add Brand</a><a class="nav-link" href="{% url 'products:add_size' %}">Add Size</a>
-                  </div>
-                  <div class="col-lg-5">
-                    <a class="nav-link" href="{% url 'products:list_brands' %}">List Brand</a><a class="nav-link" href="{% url 'products:list_sizes' %}">View Sizes</a>
-                  </div>
-              </div>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_brand' %}"> Brand</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{% url 'products:add_size' %}">Size</a></li>
               <li class="nav-item"> <a class="nav-link" href="{% url 'products:prod_cat' %}">Categories</a></li>
             </ul>
           </div>

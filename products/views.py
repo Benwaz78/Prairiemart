@@ -42,6 +42,9 @@ class UpdateProduct(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     form_class = ProductForm
     template_name = 'dashboard/products/add-edit-product.html'
 
+    def get_success_url(self):
+        return reverse('products:edit_product', kwargs={'pk' : self.object.pk})
+
 class ListProducts(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
     model = Products
@@ -75,6 +78,12 @@ class BrandFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         brand.instance.slug = slugify(concate)
         return super().form_valid(brand)
 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_brands'] = Brand.objects.all()
+        return context
+
 class UpdateBrand(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
     model = Brand
@@ -82,6 +91,13 @@ class UpdateBrand(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = 'Brand edited successfully'
     form_class = BrandForm
     template_name = 'dashboard/brand/add-edit-brand.html'
+
+
+    def get_success_url(self):
+        return reverse('products:edit_brand', kwargs={'pk' : self.object.pk})
+
+
+
 
 class ListBrands(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
@@ -116,7 +132,12 @@ class SizeFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         concate = f'{randomize}-{size.instance.size}'
         size.instance.slug = slugify(concate)
         return super().form_valid(size)
-    
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_sizes'] = Size.objects.all()
+        return context
+
     
 
 
@@ -127,6 +148,9 @@ class UpdateSize(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = 'Size edited successfully'
     form_class = SizeForm
     template_name = 'dashboard/size/add-edit-size.html'
+
+    def get_success_url(self):
+        return reverse('products:edit_size', kwargs={'pk' : self.object.pk})
 
 class ListSizes(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'

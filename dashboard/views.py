@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from dashboard.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
@@ -80,6 +80,9 @@ def edit_form(request):
             return redirect('dashboard:view_profile')
     else:
         edit_form = EditProfileForm(instance=request.user)
+
+    def get_success_url(self):
+        return reverse('dashboard:edit_form', kwargs={'pk' : self.object.pk})
     return render(request, 'dashboard/users/edit-admin-profile.html', {'edit':edit_form})
 
 @login_required(login_url='/dashboard/')
@@ -92,6 +95,8 @@ def edit_vendor_profile_form(request):
             return redirect('dashboard:view_profile')
     else:
         edit_form = EditVendorProfileForm(instance=request.user)
+    def get_success_url(self):
+        return reverse('dashboard:edit_vendor_profile_form', kwargs={'pk' : self.object.pk})
     return render(request, 'dashboard/users/edit-vendor-profile.html', {'edit_vendor':edit_form})
 
 @login_required(login_url='/dashboard/')
@@ -143,11 +148,17 @@ class UpdateUser(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         form.instance.is_vendor = True
         form.instance.is_active = True
         return super().form_valid(form)
+        
+    def get_success_url(self):
+        return reverse('dashboard:single_user', kwargs={'pk' : self.object.pk})
+        
+        
 
 def activate_user(request, user_id):
     get_user = get_object_or_404(CustomUser, id=user_id)
     get_user.activate_user()
     return redirect('dashboard:list_users')
+    
 
 def deactivate_user(request, user_id):
     get_user = get_object_or_404(CustomUser, id=user_id)
