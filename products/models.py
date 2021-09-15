@@ -42,7 +42,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         return reverse('prairiemartapp:category_list', args=[self.slug])
-
+    
 class Brand(models.Model):
     brand_name = models.CharField(max_length=30, unique=True, verbose_name='Brand')
     slug = models.SlugField(unique=True)

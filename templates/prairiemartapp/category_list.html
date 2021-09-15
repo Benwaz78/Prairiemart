@@ -100,36 +100,16 @@ Category_list
                         </div><!-- Show per page -->
 
                     </div>
+                    {% include "prairiemartapp/pagination.html" with page=prod %}
 
-                    <ul class="pagination">
-                        <li class="action">
-                            <a href="#">
-                                <span><i aria-hidden="true" class="fa fa-angle-left"></i></span>
-                            </a>
-                        </li>
-
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li class="action">
-                            <a href="#">
-                                <span><i aria-hidden="true" class="fa fa-angle-right"></i></span>
-                            </a>
-                        </li>
-                    </ul>
 
                 </div><!-- Toolbar -->
 
                 <!-- List Products -->
                 <div class="products  products-list">
                     <ol class="product-items row">
-                        {% for product in products %}
+                        {% if prod %}
+                        {% for product in prod %}
                         <li class="col-sm-12 product-item ">
                             <div class="product-item-opt-1">
                                 <div class="product-item-info">
@@ -160,7 +140,7 @@ Category_list
                                             </div>
 
                                             <div class="product-item-code">
-                                                <span class="title">Item Code:</span> #453217907
+                                                <span class="title">Brand:</span> {{product.brand}}
                                             </div>
                                             <div class="product-item-stock">
                                                 <span class="title">Available:</span> {{product.is_active}}
@@ -181,6 +161,8 @@ Category_list
                             </div>
                         </li>
                         {% endfor %}
+                        {% endif %}
+
 
                     </ol><!-- list product -->
                 </div> <!-- List Products -->
@@ -225,30 +207,7 @@ Category_list
 
                     </div>
 
-                    <ul class="pagination">
-
-
-                        <li class="active">
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
-                        <li class="action action-next">
-                            <a href="#">
-                                Next <span><i aria-hidden="true" class="fa fa-angle-double-right"></i></span>
-                            </a>
-                        </li>
-                    </ul>
+                    {% include "prairiemartapp/pagination.html" with page=prod %}
 
                 </div><!-- Toolbar -->
 
