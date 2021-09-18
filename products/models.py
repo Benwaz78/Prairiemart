@@ -108,11 +108,11 @@ class Products(models.Model):
         verbose_name_plural='Products'
         ordering = ('-created',)
 
-    def show_image1(self):
-        if self.image1:
-            return self.image1.url
-        else:
-            return 'prairiemartapp/images/media/index1/top-brand2.png'
+    # def show_image1(self):
+    #     if self.image1:
+    #         return self.image1.url
+    #     else:
+    #         return 'prairiemartapp/images/media/index1/top-brand2.png'
 
     # def show_image2(self):
     #     if self.image2:

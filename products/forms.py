@@ -64,11 +64,7 @@ class ProductForm(forms.ModelForm):
     image1 = forms.ImageField(
         label='Product Image 1*',
         widget=forms.ClearableFileInput(
-<<<<<<< HEAD
-            attrs={'class':'form-control','multiple':True, 'name':'images'}
-=======
             attrs={'class':'form-control','multiple':True}
->>>>>>> master
         )
     )
     # image2 = forms.ImageField(
