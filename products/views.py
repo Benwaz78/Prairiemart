@@ -11,7 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import(
     ListView, DeleteView, 
     DetailView, CreateView,
-    UpdateView, View, TemplateView
+    UpdateView, View, TemplateView,FormView
     )
 
 import random
@@ -26,6 +26,7 @@ class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = 'Product added successfully'
     form_class = ProductForm
 
+<<<<<<< HEAD
     def files(self):
         files = request.FILES.getlist('images')
         for file in files:
@@ -33,6 +34,20 @@ class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
                 image1 = file
                 )
         return files
+=======
+    def images(self,request):
+        files = request.FILES.getlist('image1')
+        if form.is_valid():
+            for f in files:
+                image=ProductForm(
+                    image1 = f
+                )
+                image.save()
+            return self.form_valid(form)
+        else:
+            return self.form_valid(form)
+
+>>>>>>> master
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         randomize = random.randint(0, 999999999999)
