@@ -11,7 +11,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import(
     ListView, DeleteView, 
     DetailView, CreateView,
-    UpdateView, View, TemplateView
+    UpdateView, View, TemplateView,FormView
     )
 
 import random
@@ -26,6 +26,17 @@ class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = 'Product added successfully'
     form_class = ProductForm
 
+    def images(self,request):
+        files = request.FILES.getlist('image1')
+        if form.is_valid():
+            for f in files:
+                image=ProductForm(
+                    image1 = f
+                )
+                image.save()
+            return self.form_valid(form)
+        else:
+            return self.form_valid(form)
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -37,10 +48,13 @@ class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class UpdateProduct(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
     model = Products
-    success_url = reverse_lazy('backend:add_meeting')
+    success_url = reverse_lazy('products:edit_product')
     success_message = 'Product edited successfully'
     form_class = ProductForm
     template_name = 'dashboard/products/add-edit-product.html'
+
+    def get_success_url(self):
+        return reverse('products:edit_product', kwargs={'pk' : self.object.pk})
 
 class ListProducts(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
@@ -75,13 +89,26 @@ class BrandFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         brand.instance.slug = slugify(concate)
         return super().form_valid(brand)
 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_brands'] = Brand.objects.all()
+        return context
+
 class UpdateBrand(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
     model = Brand
-    success_url = reverse_lazy('backend:add_meeting')
+    success_url = reverse_lazy('products:edit_brand')
     success_message = 'Brand edited successfully'
     form_class = BrandForm
     template_name = 'dashboard/brand/add-edit-brand.html'
+
+
+    def get_success_url(self):
+        return reverse('products:edit_brand', kwargs={'pk' : self.object.pk})
+
+
+
 
 class ListBrands(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
@@ -93,7 +120,7 @@ class ListBrands(LoginRequiredMixin, ListView):
 class DeleteBrand(LoginRequiredMixin, DeleteView):
     login_url = '/dashboard/'
     model = Brand
-    success_url = reverse_lazy('products:list_brand')
+    success_url = reverse_lazy('products:list_brands')
 
 class SingleBrand(LoginRequiredMixin, DetailView):
     login_url = '/dashboard/'
@@ -117,14 +144,24 @@ class SizeFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         size.instance.slug = slugify(concate)
         return super().form_valid(size)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['list_sizes'] = Size.objects.all()
+        return context
+
+    
+
 
 class UpdateSize(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
     model = Size
-    success_url = reverse_lazy('backend:add_meeting')
+    success_url = reverse_lazy('products:edit_size')
     success_message = 'Size edited successfully'
     form_class = SizeForm
     template_name = 'dashboard/size/add-edit-size.html'
+
+    def get_success_url(self):
+        return reverse('products:edit_size', kwargs={'pk' : self.object.pk})
 
 class ListSizes(LoginRequiredMixin, ListView):
     login_url = '/dashboard/'
@@ -169,10 +206,12 @@ class ProductCategoryFormView(LoginRequiredMixin, SuccessMessageMixin, CreateVie
         return super().form_valid(form)
 
 
+
+
 class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = '/dashboard/'
     model = Category
-    success_url = reverse_lazy('backend:edit_cat')
+    success_url = reverse_lazy('products:edit_cat')
     success_message = 'Category edited successfully'
     form_class = ProductCategoryForm
     template_name = 'dashboard/category/add-edit-category.html'
@@ -189,18 +228,18 @@ class DeleteCategory(LoginRequiredMixin, DeleteView):
 
 # Product Category views ends here
 
-class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
-    login_url = '/dashboard/'
-    model = Category
-    success_url = reverse_lazy('backend:edit_cat')
-    success_message = 'Category edited successfully'
-    form_class = ProductCategoryForm
-    template_name = 'dashboard/category/add-edit-category.html'
+# class UpdateProductCategory(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+#     login_url = '/dashboard/'
+#     model = Category
+#     success_url = reverse_lazy('backend:edit_cat')
+#     success_message = 'Category edited successfully'
+#     form_class = ProductCategoryForm
+#     template_name = 'dashboard/category/add-edit-category.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['list_cat'] = Category.objects.order_by('-created')
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context['list_cat'] = Category.objects.order_by('-created')
+#         return context
 
 
 def category_grid(request):
