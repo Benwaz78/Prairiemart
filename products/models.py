@@ -96,8 +96,8 @@ class Products(models.Model):
     in_stock = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     image1 = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    image2 = models.ImageField(upload_to='uploads/', blank=True, null=True)
-    image3 = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    # image2 = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    # image3 = models.ImageField(upload_to='uploads/', blank=True, null=True)
     description = models.TextField(blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -114,17 +114,17 @@ class Products(models.Model):
         else:
             return 'prairiemartapp/images/media/index1/top-brand2.png'
 
-    def show_image2(self):
-        if self.image2:
-            return self.image2.url
-        else:
-            return 'prairiemartapp/images/media/index1/top-brand2.png'
+    # def show_image2(self):
+    #     if self.image2:
+    #         return self.image2.url
+    #     else:
+    #         return 'prairiemartapp/images/media/index1/top-brand2.png'
 
-    def show_image3(self):
-        if self.image3:
-            return self.image3.url
-        else:
-            return 'prairiemartapp/images/media/index1/top-brand2.png'
+    # def show_image3(self):
+    #     if self.image3:
+    #         return self.image3.url
+    #     else:
+    #         return 'prairiemartapp/images/media/index1/top-brand2.png'
     
     def get_absolute_url(self):
         return reverse('prairiemartapp:product_detail', args=[self.slug])

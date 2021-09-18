@@ -64,21 +64,21 @@ class ProductForm(forms.ModelForm):
     image1 = forms.ImageField(
         label='Product Image 1*',
         widget=forms.ClearableFileInput(
-            attrs={'class':'form-control',}
+            attrs={'class':'form-control','multiple':True, 'name':'images'}
         )
     )
-    image2 = forms.ImageField(
-        label='Product Image 2*',
-        widget=forms.ClearableFileInput(
-            attrs={'class':'form-control',}
-        )
-    )
-    image3 = forms.ImageField(
-        label='Product Image 3*',
-        widget=forms.ClearableFileInput(
-            attrs={'class':'form-control',}
-        )
-    )
+    # image2 = forms.ImageField(
+    #     label='Product Image 2*',
+    #     widget=forms.ClearableFileInput(
+    #         attrs={'class':'form-control',}
+    #     )
+    # )
+    # image3 = forms.ImageField(
+    #     label='Product Image 3*',
+    #     widget=forms.ClearableFileInput(
+    #         attrs={'class':'form-control',}
+    #     )
+    # )
     description = forms.CharField(
         label='Description*',
         widget=forms.Textarea(

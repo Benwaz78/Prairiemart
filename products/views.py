@@ -26,7 +26,13 @@ class ProductFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = 'Product added successfully'
     form_class = ProductForm
 
-
+    def files(self):
+        files = request.FILES.getlist('images')
+        for file in files:
+            images=ProductForm(
+                image1 = file
+                )
+        return files
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         randomize = random.randint(0, 999999999999)
