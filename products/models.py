@@ -41,7 +41,7 @@ class Category(models.Model):
         return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('prairiemartapp:category_list', args=[self.slug])
+        return reverse('products:category_grid', args=[self.slug])
     
 class Brand(models.Model):
     brand_name = models.CharField(max_length=30, unique=True, verbose_name='Brand')
@@ -65,6 +65,9 @@ class Brand(models.Model):
     def save(self, *args, **kwargs):
         self.cat_name = self.brand_name.capitalize()
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('products:single_brand', kwargs={'slug':self.slug})
 
 
 class Size(models.Model):
@@ -130,6 +133,10 @@ class Products(models.Model):
     
     def get_absolute_url(self):
         return reverse('prairiemartapp:product_detail', args=[self.slug])
+
+    def get_absolute_url(self):
+        return reverse('products:product_detail', args=[self.id, self.slug])
+
 
     def __str__(self):
         return self.prod_name

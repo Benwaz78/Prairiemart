@@ -2,10 +2,10 @@ from decimal import Decimal
 
 from django.conf import settings
 
-from Store.models import Products
+from products.models import Products
 
 
-class Basket():
+class Basket(object):
     """
     A base Basket class, providing some default behaviors that
     can be inherited or overrided, as necessary.
@@ -18,18 +18,33 @@ class Basket():
             basket = self.session[settings.BASKET_SESSION_ID] = {}
         self.basket = basket
 
-    def add(self, product, qty):
+    def add(self, product, quantity=1, update_quantity=False):
         """
         Adding and updating the users basket session data
         """
         product_id = str(product.id)
 
-        if product_id in self.basket:
-            self.basket[product_id]['qty'] = qty
+        if product_id not in self.basket:
+            self.basket[product_id] = {
+                'quantity': 0, 'price': str(product.price)}
+        if update_quantity:
+            self.basket[product_id]['quantity'] = quantity
         else:
-            self.basket[product_id] = {'price': str(product.price), 'qty': qty}
-
+            self.basket[product_id]['quantity'] += quantity
         self.save()
+
+    def save(self):
+        self.session[settings.BASKET_SESSION_ID] = self.basket
+        self.session.modified = True
+
+    def delete(self, product):
+        """
+        Delete item from session data
+        """
+        product_id = str(product.id)
+        if product_id in self.basket:
+            del self.basket[product_id]
+            self.save()
 
     def __iter__(self):
         """
@@ -37,63 +52,35 @@ class Basket():
         and return products
         """
         product_ids = self.basket.keys()
-        products = Products.products.filter(id__in=product_ids)
-        basket = self.basket.copy()
-
+        products = Products.objects.filter(id__in=product_ids)
         for product in products:
-            basket[str(product.id)]['product'] = product
+            self.basket[str(product.id)]['product'] = product
 
-        for item in basket.values():
+        for item in self.basket.values():
             item['price'] = Decimal(item['price'])
-            item['total_price'] = item['price'] * item['qty']
+            item['total_price'] = item['price'] * item['quantity'] 
             yield item
 
     def __len__(self):
         """
         Get the basket data and count the qty of items
         """
-        return sum(item['qty'] for item in self.basket.values())
-
-    def update(self, product, qty):
-        """
-        Update values in session data
-        """
-        product_id = str(product)
-        if product_id in self.basket:
-            self.basket[product_id]['qty'] = qty
-        self.save()
-
-    def get_subtotal_price(self):
-        return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
+        return sum(item['quantity'] for item in self.basket.values())
 
     def get_total_price(self):
+        subtotal = sum(Decimal(item['price']) * item['quantity'] for item in self.basket.values())
 
-        subtotal = sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
+        # if subtotal == 0:
+        #     shipping = Decimal(0.00)
+        # else:
+        #     shipping = Decimal(0.50)
 
-        if subtotal == 0:
-            shipping = Decimal(0.00)
-        else:
-            shipping = Decimal(11.50)
-
-        total = subtotal + Decimal(shipping)
-        return total
-
-    def delete(self, product):
-        """
-        Delete item from session data
-        """
-        product_id = str(product)
-
-        if product_id in self.basket:
-            del self.basket[product_id]
-            self.save()
+        # total = subtotal + Decimal(shipping)
+        return subtotal
 
     def clear(self):
         # Remove basket from session
         del self.session[settings.BASKET_SESSION_ID]
-        self.save()
-
-    def save(self):
         self.session.modified = True
 
 

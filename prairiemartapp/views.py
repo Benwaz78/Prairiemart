@@ -8,8 +8,8 @@ from prairiemartapp.forms import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
 from django.contrib import messages
-from django.core.paginator import Paginator, EmptyPage,\
-    PageNotAnInteger
+from basket.basket import Basket
+
 
 
 @login_required(login_url='/dashboard/')                                                                                                                                                                                                                                                                                                                                                                                                                            
@@ -47,6 +47,7 @@ def edit_form(request):
 
 
 def index(request, category_slug=None):
+    basket = Basket(request)
     category = None
     categories = Category.objects.all()
     products = Products.objects.filter(in_stock=True)
@@ -55,7 +56,7 @@ def index(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = Products.objects.filter(category=category)
         brand = get_object_or_404(Brand, slug=category_slug)
-    return render(request, 'prairiemartapp//index.html',{'category': category, 'categories': categories, 'products': products, 'brand':brand})
+    return render(request, 'prairiemartapp//index.html',{'basket':basket, 'category': category, 'categories': categories, 'products': products, 'brand':brand})
 
 def about(request):
     return render(request, 'prairiemartapp/about.html')
@@ -88,33 +89,8 @@ def wishlist(request):
 def category_grid(request):
     return render(request, 'prairiemartapp/category_grid.html')
 
-def category_list(request, category_slug=None):
-    object_list = Products.objects.all()
-    products = Products.objects.filter(in_stock=True)
-    category = None
-    categories = Category.objects.all()
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        products = Products.objects.filter(category=category)
-        paginator = Paginator(object_list, 1)  # number of products that will appear in each page
-        page = request.GET.get('page')
-        try:
-            prod = paginator.page(page)
-        except PageNotAnInteger:
-        # If page is not an integer deliver the first page
-            prod = paginator.page(1)
-        except EmptyPage:
-        # If page is out of range deliver last page of results
-            prod = paginator.page(paginator.num_pages)
-    
-    context = {
-        'category': category,
-        'categories': categories,
-        'products': products,
-        'page':page,
-        'prod':prod
-    }
-    return render(request, 'prairiemartapp/category_list.html',context)
+def category_list(request):
+    return render(request, 'prairiemartapp/category_list.html')
 
 
 def cutomer_dashboard(request):

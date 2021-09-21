@@ -1,0 +1,18 @@
+{% load static %}
+{% load prairiemart_tags %}
+{% if categories_on_menu %}
+{% for c in categories_on_menu %}
+<li class="parent parent-submenu">
+    <a href="{{ c.get_absolute_url }}"> {{ c.cat_name }} </a>
+    <span class="toggle-submenu"></span>
+    <div class="submenu drop-menu">
+        <ul>
+            <li><a href="">Shoes</a></li>
+            <li><a href="">Clothing</a></li>
+            <li><a href="">Accessories</a></li>
+            <li><a href="">Sunglasses</a></li>
+        </ul>
+    </div>
+</li>
+{% endfor %}
+{% endif %}
